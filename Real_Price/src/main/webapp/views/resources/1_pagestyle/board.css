@@ -1,0 +1,186 @@
+@charset "UTF-8";
+.logo_div_board {
+    /* border: 1px solid black; */
+    width: 75%;
+    height: 100px;
+    margin: 0 auto;
+    padding-left: 50px;
+}
+
+
+/*게시판 메뉴*/
+
+.board_section {
+    /* border: 1px solid black; */
+    width: 75%;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.board_menu {
+    float: left;
+    border: 1px solid rgba(243, 215, 103, 0.3);
+    width: 20%;
+    height: 100%;
+    background-color: rgba(243, 215, 103, 0.3);
+}
+
+.board_menu h1 {
+    padding-left: 20px;
+}
+
+.board_menu ul {
+    font-size: 20pt;
+    padding-left: 30px;
+    list-style: none;
+}
+
+.board_menu ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.board_menu ul li a {
+    font-size: 15pt;
+    text-decoration: none;
+    color: rgb(44, 43, 43);
+    font-weight: bold;
+}
+
+.board_menu ul li:hover {
+    background-color: rgba(243, 113, 53, 0.904);
+}
+
+.board_menu ul li a:hover {
+    color: white;
+}
+
+
+/*게시판 리스트*/
+
+.board_list {
+    /* border: 1px solid black; */
+    float: left;
+    width: 70%;
+    height: 100%;
+    margin-left: 30px;
+}
+
+.board_list div {
+    /* border: 1px solid black; */
+}
+
+.mytext {
+    float: right;
+    margin-right: 20px;
+    background-color: rgba(180, 180, 180, 0.822);
+    border-radius: 5px;
+    border: 0;
+}
+
+.mytext a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*hover 추가*/
+
+.write {
+    float: right;
+    margin-right: 20px;
+    background-color: rgba(243, 91, 53, 0.904);
+    border-radius: 5px;
+    border: 0;
+}
+
+.write a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/*hover 추가*/
+
+.board_search {
+    text-align: right;
+    padding-top: 30px;
+}
+
+.board_search_button {
+    margin: 0px 10px 0px 5px;
+}
+
+.board_list_div {
+    /* border: 1px solid black; */
+    float: left;
+    width: 100%;
+    height: 70%;
+    text-align: center;
+}
+
+.board_table th {
+    background-color: rgba(180, 180, 180, 0.822);
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.board_table table {
+    margin-left: 20px;
+}
+
+.board_table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(182, 182, 182, 0.233);
+}
+
+.board_table td a {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+}
+
+.board_table td a:hover {
+    text-decoration: underline;
+}
+
+.title {
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.writer {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.date {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.views {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.board_page_button_div {
+    padding-left: 35%;
+}
+
+.board_page_button {
+    background-color: rgba(243, 170, 53, 0.527);
+    font-size: 15pt;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(151, 151, 151, 0.4);
+}
+
+.board_page_button:hover {
+    background-color: rgba(63, 46, 121, 0.83);
+}

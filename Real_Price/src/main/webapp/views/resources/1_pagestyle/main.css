@@ -1,0 +1,397 @@
+@charset "UTF-8";
+
+/*header*/
+
+
+/*로고, 사용자(로그인), 장바구니 아이콘*/
+
+
+/*로고*/
+
+.header_div {
+    width: 1500px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+
+/*네비게이션 바(메뉴바)*/
+
+.nav_div {
+    margin-left: 980px;
+}
+
+.navi {
+    width: 1500px;
+    height: 60px;
+    margin: 0 auto;
+    /*border: 1px black solid;*/
+}
+
+.header_nav {}
+
+.nav_item {
+    padding-left: 5px;
+    display: inline-block;
+    color: rgba(127, 127, 127);
+    font-size: 15pt;
+}
+
+.nav_link {
+    font: bold;
+    font-size: 13pt;
+    text-decoration: none;
+    color: rgba(127, 127, 127);
+}
+
+.nav_item:hover>a {
+    text-decoration: underline;
+}
+
+
+/*section*/
+
+
+/*메인 섹션*/
+
+.main_section {
+    width: 1700px;
+    height: 600px;
+    border: 1px solid rgba(63, 46, 121, 0.83);
+    margin: 0 auto;
+    background-color: rgba(63, 46, 121, 0.83);
+}
+
+.logo_div {
+    float: left;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.main_menu_div {
+    margin: 60px 0px 0px 500px;
+}
+
+.main_menu li {
+    display: inline-block;
+}
+
+.main_menu li a {
+    font-weight: bold;
+    font-size: 23pt;
+    line-height: 40px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.76);
+    padding: 10px 25px 10px 25px;
+}
+
+.main_menu li:hover>a {
+    background-color: rgba(39, 28, 75, 0.83);
+}
+
+
+/*검색 박스*/
+
+.search {
+    width: 1200px;
+    margin-top: 200px;
+    margin-left: 250px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.search_filter {
+    vertical-align: middle;
+    display: inline-block;
+    height: 100%;
+    margin: 0px 0px 0px 80px;
+}
+
+.search_form {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.search_select {
+    vertical-align: middle;
+    display: inline-block;
+    width: 200px;
+    height: 60px;
+    background-color: rgb(247, 232, 207);
+    font-size: 20pt;
+}
+
+.search_select option {
+    font-size: 20pt;
+}
+
+.search_box {
+    vertical-align: middle;
+    display: inline-block;
+    height: 100%;
+    width: 600px;
+}
+
+.input_searchbox {
+    padding-top: 2px;
+    width: 600px;
+    height: 54px;
+    line-height: 50px;
+    font-size: 13pt;
+}
+
+.search_icon {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 0px 0px 0px 20px;
+    margin: 0px 0px 0px -80px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.search_icon1 {
+    width: 100%;
+    height: 100%;
+}
+
+.best_list_div {
+    vertical-align: middle;
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    margin-left: 30px;
+}
+
+.best_list {
+    vertical-align: middle;
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.best_list li {
+    float: left;
+    position: relative;
+    line-height: 50px;
+    background-color: rgba(243, 113, 53, 0.904);
+}
+
+.best_list li a {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 5px 25px;
+    color: rgba(255, 255, 255, 0.836);
+    text-decoration: none;
+    font-size: 20pt;
+}
+
+.best_list li a:hover {
+    color: rgb(44, 43, 43);
+    ;
+}
+
+.best_list li ul {
+    position: absolute;
+    left: 0px;
+    width: 185px;
+    list-style-type: none;
+    background-color: rgba(243, 113, 53, 0.753);
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.best_list li:hover ul {
+    opacity: 1;
+}
+
+.best_list li ul li {
+    float: none;
+    background: none;
+    position: static;
+    height: 0px;
+    line-height: 30px;
+}
+
+.best_list li:hover ul li {
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 0;
+}
+
+.best_list li ul li a {
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    font-size: 13pt;
+}
+
+.best_list li ul li a:hover {
+    background-color: rgba(243, 170, 53, 0.527);
+    color: white;
+}
+
+.best_list li ul {
+    transition: all 1s;
+}
+
+.best_list li ul li {
+    transition: height 0.5s;
+}
+
+
+/*상품별, 지점별, 인기별 링크 박스*/
+
+.div_categorize {
+    width: 1500px;
+    height: 500px;
+    margin: -80px auto;
+    margin-bottom: 100px;
+    border-radius: 30px;
+    background-color: rgb(255, 252, 247);
+    text-align: center;
+    box-shadow: 10px 10px 10px rgba(151, 151, 151, 0.418);
+}
+
+.div_categorize_detail {
+    display: inline-block;
+}
+
+.div1_products {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    margin-right: 50px;
+    background-color: rgba(161, 145, 212, 0.699);
+    box-shadow: 10px 10px 10px rgba(151, 151, 151, 0.4);
+}
+
+.product_img {
+    width: 70%;
+    margin-top: 60px;
+}
+
+.div2_stores {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    margin: 100px 50px 0px 50px;
+    background-color: rgba(161, 145, 212, 0.699);
+    box-shadow: 10px 10px 10px rgba(151, 151, 151, 0.4);
+}
+
+.store_img {
+    width: 70%;
+    margin-top: 60px;
+}
+
+.div3_best {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    margin-left: 50px;
+    background-color: rgba(161, 145, 212, 0.699);
+    box-shadow: 10px 10px 10px rgba(151, 151, 151, 0.4);
+}
+
+.best_img {
+    width: 70%;
+    margin-top: 50px;
+}
+
+.button_category1 {
+    margin: 10px 50px 0px 0px;
+    border: none;
+    background-color: rgb(255, 252, 247);
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.button_category2 {
+    margin: 10px 0px 0px 0px;
+    border: none;
+    background-color: rgb(255, 252, 247);
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.button_category3 {
+    margin: 10px 0px 0px 50px;
+    border: none;
+    background-color: rgb(255, 252, 247);
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.button_category1 a {
+    text-decoration: none;
+    color: rgb(61, 61, 61);
+}
+
+.button_category2 a {
+    text-decoration: none;
+    color: rgb(61, 61, 61);
+}
+
+.button_category3 a {
+    text-decoration: none;
+    color: rgb(61, 61, 61);
+}
+
+
+/*footer*/
+
+.footer_div1 {
+    position: relative;
+    width: 1700px;
+    height: 130px;
+    margin: 120px auto;
+    background-color: rgba(243, 170, 53, 0.527);
+}
+
+.footer_layer1 {
+    float: left;
+    width: 200px;
+    padding: 20px;
+}
+
+.footer_layer2 {
+    float: left;
+    color: black;
+    line-height: 130%;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.footer_layer3 {
+    float: right;
+    color: black;
+    line-height: 130%;
+    padding: 20px;
+    padding-right: 50px;
+    font-size: 15px;
+}
+
+.footer_layer4 {
+    float: right;
+    color: black;
+    line-height: 130%;
+    padding: 20px;
+    padding-right: 100px;
+    font-size: 15px;
+}
+
+.footer_div2 {
+    width: 1700px;
+    margin: 30px auto;
+    margin-top: -110px;
+}
+
+.footer_layer5 {
+    padding-left: 10px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+}

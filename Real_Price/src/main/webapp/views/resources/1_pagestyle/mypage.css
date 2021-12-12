@@ -1,0 +1,162 @@
+@charset "UTF-8";
+.logo_div_board {
+    /* border: 1px solid black; */
+    width: 75%;
+    height: 100px;
+    margin: 0 auto;
+    padding-left: 50px;
+}
+
+
+/*마이페이지 메뉴*/
+
+.mypage_section {
+    /* border: 1px solid black; */
+    width: 75%;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.mypage_menu {
+    float: left;
+    border: 1px solid rgba(243, 215, 103, 0.3);
+    width: 20%;
+    height: 100%;
+    background-color: rgba(243, 215, 103, 0.3);
+}
+
+.user_info {
+    /*border: 1px solid black;*/
+    width: 100%;
+    height: 35%;
+    text-align: center;
+}
+
+.user_img {
+    margin-top: 10%;
+    width: 45%;
+    height: 50%;
+}
+
+.mypage_menu h3 {
+    padding-left: 20px;
+}
+
+.mypage_menu ul {
+    padding-left: 30px;
+    list-style: none;
+}
+
+.mypage_menu ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.mypage_menu ul li a {
+    font-size: 12pt;
+    text-decoration: none;
+    color: rgb(44, 43, 43);
+    font-weight: bold;
+}
+
+.mypage_menu ul li:hover {
+    background-color: rgba(243, 113, 53, 0.904);
+}
+
+.mypage_menu ul li a:hover {
+    color: white;
+}
+
+
+/*예약 내역 리스트*/
+
+.reser_list {
+    /* border: 1px solid black; */
+    float: left;
+    width: 70%;
+    height: 100%;
+    margin-left: 30px;
+}
+
+.reser_date input {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.reser_list_div {
+    /* border: 1px solid black; */
+    float: left;
+    width: 100%;
+    height: 70%;
+    text-align: center;
+}
+
+.reser_table th {
+    background-color: rgba(180, 180, 180, 0.822);
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.reser_table table {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.reser_table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(182, 182, 182, 0.233);
+}
+
+.reser_table td a {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+}
+
+.reser_table td a:hover {
+    text-decoration: underline;
+}
+
+.title {
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.writer {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.date {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.views {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.board_page_button_div {
+    padding-left: 35%;
+}
+
+.board_page_button {
+    background-color: rgba(243, 170, 53, 0.527);
+    font-size: 15pt;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(151, 151, 151, 0.4);
+}
+
+.board_page_button:hover {
+    background-color: rgba(63, 46, 121, 0.83);
+}

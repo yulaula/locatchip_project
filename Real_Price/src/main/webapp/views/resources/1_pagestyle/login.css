@@ -1,0 +1,133 @@
+@charset "UTF-8";
+body {
+    background-color: rgb(229, 188, 28, 0.13);
+}
+
+
+/*로그인*/
+
+.login_div {
+    margin: 0 auto;
+    background-color: white;
+    width: 700px;
+    height: 1200px;
+    border: 1px solid white;
+}
+
+.login_check {
+    border: 1px solid white;
+    width: 80%;
+    height: 40%;
+    margin-top: 200px;
+    margin-left: 70px;
+}
+
+.login_radio {
+    float: right;
+    width: 40%;
+    margin: 10px 100px 10px 0px;
+}
+
+.id_pw {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.id_pw input {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.login_button_div {
+    text-align: center;
+}
+
+.login_button {
+    background-color: rgba(231, 76, 60, 0.88);
+    color: white;
+    font-weight: bold;
+    width: 300px;
+    height: 40px;
+    font-size: 12pt;
+    border-radius: 5px;
+}
+
+.login_nav_div {
+    text-align: center;
+}
+
+.login_nav li {
+    display: inline-block;
+    color: rgba(127, 127, 127);
+}
+
+.other_login {
+    font: bold;
+    font-size: 10pt;
+    text-decoration: none;
+    color: rgba(127, 127, 127);
+}
+
+.login_nav li:hover>a {
+    text-decoration: underline;
+}
+
+
+/*회원가입*/
+
+.signup_choice {
+    width: 80%;
+    height: 20%;
+    margin-top: 200px;
+    margin-left: 70px;
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
+.person {
+    color: rgba(231, 76, 60, 0.88);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18pt;
+    margin-right: 10px;
+}
+
+.store {
+    color: rgba(127, 127, 127);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18pt;
+    margin-left: 10px;
+}
+
+.checklist {
+    /* border: 1px solid black; */
+    width: 60%;
+    height: 40%;
+    text-align: left;
+    margin-left: 150px;
+    color: rgb(85, 85, 85);
+}
+
+.signup_form {
+    width: 40%;
+    height: 60%;
+    /* border: 1px black solid; */
+    margin-left: 230px;
+}
+
+.signup_form input {
+    width: 98%;
+    height: 30px;
+}
+
+.id_check {
+    float: right;
+}
+
+.signup_button {
+    margin: 50px 0px 0px 0px;
+    width: 100%;
+    height: 5%;
+}

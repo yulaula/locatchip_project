@@ -1,0 +1,139 @@
+@charset "UTF-8";
+.logo_div_board {
+    /* border: 1px solid black; */
+    width: 75%;
+    height: 100px;
+    margin: 0 auto;
+    padding-left: 50px;
+}
+
+
+/* 장바구니 메인 */
+
+.cart_main {
+    /*border: 1px solid black;*/
+    width: 100%;
+    height: 150pt;
+    background-color: rgba(243, 215, 103, 0.3);
+}
+
+.cart_main div {
+    border: 1px solid rgba(243, 215, 103, 0.3);
+    width: 60%;
+    height: 60%;
+    margin: 30px 0px 0px 20%;
+}
+
+
+/*장바구니 상세*/
+
+.cart_table {
+    width: 70%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.cart_table table {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    ;
+    border-collapse: collapse;
+    margin-left: 10%;
+}
+
+.cart_table th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(184, 183, 183, 0.514);
+}
+
+.cart_table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(184, 183, 183, 0.514);
+}
+
+.product_info {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.product_option {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.product_price {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.product_store {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.img_product {
+    width: 70px;
+    height: 70px;
+}
+
+.cart_button_div {
+    margin-top: 10px;
+    margin-left: 10%;
+}
+
+.cart_price {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.cart_table a {
+    color: rgb(56, 56, 56);
+    text-decoration: none;
+}
+
+.cart_table a:hover {
+    text-decoration: underline;
+}
+
+.td_product_info {
+    display: inline-block;
+    width: 250px;
+    height: 100%;
+}
+
+.product_img_div {
+    float: left;
+}
+
+.product_name_div {
+    float: left;
+    margin-top: 30px;
+}
+
+.order_detail {
+    background-color: rgba(231, 76, 60, 0.88);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.shopping_continue {
+    width: 15%;
+    height: 30px;
+    margin-bottom: 100px;
+}
+
+.order_now {
+    width: 15%;
+    height: 30px;
+    margin-bottom: 100px;
+    background-color: rgba(231, 76, 60, 0.88);
+    color: white;
+    border: 1px solid rgba(231, 76, 60, 0.88);
+    border-radius: 5px;
+}
