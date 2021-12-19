@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+<%@ page import="price.model.vo.Price"%>
+<%@ page import="price.model.service.PriceService"%>
+<%
+	PriceService ps = new PriceService();
+	List<Price> list = new ArrayList<Price>();
+%>
 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
 <!-- Used for marketplace templates with filters on top-->
 <div class="bg-accent pt-4 pb-7">
 	<div class="container pt-2 pb-3 pt-lg-3 pb-lg-4">
@@ -21,22 +31,36 @@
 			</div>
 		</div>
 	</div>
-	<select class="form-select form-select-sm me-2 ms-65"
+	<select class="form-select form-select-sm me-2 ms-65" name="bigCategory" id="bigCategory" onchange="changes1Step(this.value);"
 		style="width: 10%; display: inline;">
-		<option>전체</option>
-		<option>정육·난류</option>
-		<option>생선류</option>
-	</select> <select class="form-select form-select-sm me-2"
+		<option value="">전체</option>
+		<option value="030100000">농축수산물</option>
+		<option value="030101000">정육·난류</option>
+		<option value="030102000">채소</option>
+		<option value="030103000">생선류</option>
+		<option value="030200000">가공식품</option>
+		<option value="030201000">곡물가공품</option>
+		<option value="030202000">수산가공품</option>
+		<option value="030203000">낙농·축산가공품</option>
+		<option value="030204000">조미료·장류·식용유</option>
+		<option value="030205000">과자·빙과류</option>
+		<option value="030206000">차·음료·주류</option>
+		<option value="030300000">일반공산품</option>
+		<option value="030301000">이미용품</option>
+		<option value="030302000">세탁·주방·가사용품</option>
+		<option value="030303000">의류·신변용품</option>
+		<option value="030304000">의약외품</option>
+	</select> 
+	
+	<select class="form-select form-select-sm me-2" name="smallCategory" id="smallCategory"
 		style="width: 10%; display: inline;">
-		<option>전체</option>
-		<option>계란</option>
-		<option>쇠고기</option>
-		<option>닭고기</option>
-		<option>돼지고기</option>
+		<option value="">전체</option>
 	</select>
-	<div class="d-inline justify-content-between align-items-center mb-4">
+	<div class="d-inline justify-content-between align-items-center mb-4" name = "searchCategory" id = "searchCategory">
 		<a class="btn btn-outline-primary btn-sm px-5 py-2-1" href="">검색</a>
 	</div>
+
+	
 </div>
 <div class="container pb-5 mb-2 mb-md-4">
 	<!-- Toolbar-->
@@ -45,8 +69,8 @@
 			<!-- Search-->
 			<div class="input-group">
 				<form action="<%=request.getContextPath()%>/searchByProductName" method="POST">
-
-					<i class="ci-search position-absolute top-50 start-0 translate-middle-y fs-md ms-3"></i>
+					<i
+						class="ci-search position-absolute top-50 start-0 translate-middle-y fs-md ms-3"></i>
 
 					<input class="form-control border-0 shadow-none" type="text"
 						id="productName" name="productName" placeholder="상품을 입력해주세요.">
@@ -88,14 +112,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=1010"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="2_img/머거본꿀땅콩.gif" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=1010"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/1010.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -111,9 +135,14 @@
 								class="star-rating-icon ci-star-filled active"></i>
 						</div>
 					</div>
-					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">머거본 꿀땅콩(135g)</a>
-					</h3>
+					<span>					
+					<a
+						class="product-title fs-sm mb-2"
+						style="text-decoration: none; color: black;"
+						href="<%=request.getContextPath()%>/singleProduct?goodId=1010">
+							머거본 꿀땅콩(135g)
+					</a>
+					</span>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
 						<div class="fs-sm me-2">
@@ -136,21 +165,21 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=1141"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/03.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=1141"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/1141.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-start pb-2">
 						<div class="text-muted fs-xs me-1">
 							by <a class="product-meta fw-medium" href="#">Createx Std. </a>in
-							<a class="product-meta fw-medium" href="#">Graphics</a>
+							<a class="product-meta fw-medium" href="<%=request.getContextPath()%>/singleProduct?goodId=1141">Graphics</a>
 						</div>
 						<div class="star-rating">
 							<i class="star-rating-icon ci-star-filled active"></i><i
@@ -161,8 +190,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Project Devices Showcase
-							(PSD)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=1141"><%= ps.productName("1141") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -171,7 +199,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$18.<small>00</small>
+							<%= ps.MainPage("1141").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -186,14 +214,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=1000"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/08.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=1000"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/1000.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -211,8 +239,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Business Card Branding
-							Mockup</a>
+						<a href="marketplace-single.html"><%= ps.productName("1000") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -221,7 +248,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$17.<small>00</small>
+							<%= ps.MainPage("1000").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -236,14 +263,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=255"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/07.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=255"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/255.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -261,7 +288,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Gravity Device Mockups (PSD)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=255"><%= ps.productName("255") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -270,7 +297,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$16.<small>00</small>
+							<%= ps.MainPage("255").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -285,14 +312,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=223"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/01.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=223"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/223.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -310,8 +337,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Square Style Mobile UI Kit
-							(Sketch)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=223"><%= ps.productName("223") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -320,7 +346,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$24.<small>00</small>
+							<%= ps.MainPage("223").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -335,14 +361,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=321"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/04.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=321"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/321.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -360,8 +386,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Flat-line E-Commerce Icons
-							(AI)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=321"><%= ps.productName("321") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -370,7 +395,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$18.<small>00</small>
+							<%= ps.MainPage("321").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -385,14 +410,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=452"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/09.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=452"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/452.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -410,8 +435,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Isometric Device Mockups
-							(PSD)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=452"><%= ps.productName("452") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -420,7 +444,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$16.<small>00</small>
+							<%= ps.MainPage("452").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -435,14 +459,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=562"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/10.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=562"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/562.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -460,7 +484,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Coffe Paper Cup Mockup</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=562"><%= ps.productName("562") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -469,7 +493,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$10.<small>00</small>
+							<%= ps.MainPage("562").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -484,14 +508,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=302"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/06.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=302"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/302.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -509,8 +533,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Travel &amp; Landmark Icon
-							Pack (AI)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=302"><%= ps.productName("302") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -519,7 +542,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$17.<small>00</small>
+							<%= ps.MainPage("302").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -534,14 +557,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=861"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/05.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=861"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/861.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -559,8 +582,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Minimal Mobile App UI Kit
-							(Sketch)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=861"><%= ps.productName("861") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -569,7 +591,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$23.<small>00</small>
+							<%= ps.MainPage("861").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -584,14 +606,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=902"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/11.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=902"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/902.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -609,7 +631,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Printed T-Shirt Mockup (PSD)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=902"><%= ps.productName("902") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -618,7 +640,7 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$12.<small>00</small>
+							<%= ps.MainPage("902").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
@@ -633,14 +655,14 @@
 					</button>
 					<div class="product-card-actions">
 						<a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-							href="marketplace-single.html"><i class="ci-eye"></i></a>
+							href="<%=request.getContextPath()%>/singleProduct?goodId=617"><i class="ci-eye"></i></a>
 						<button class="btn btn-light btn-icon btn-shadow fs-base mx-2"
 							type="button">
 							<i class="ci-cart"></i>
 						</button>
 					</div>
-					<a class="product-thumb-overlay" href="marketplace-single.html"></a><img
-						src="img/marketplace/products/12.jpg" alt="Product">
+					<a class="product-thumb-overlay" href="<%=request.getContextPath()%>/singleProduct?goodId=617"></a><img
+						src="<%=request.getContextPath()%>/views/resources/2_img/617.png" alt="Product">
 				</div>
 				<div class="card-body">
 					<div
@@ -658,8 +680,7 @@
 						</div>
 					</div>
 					<h3 class="product-title fs-sm mb-2">
-						<a href="marketplace-single.html">Corporate Branding Mockup
-							(PSD)</a>
+						<a href="<%=request.getContextPath()%>/singleProduct?goodId=617"><%= ps.productName("617") %></a>
 					</h3>
 					<div
 						class="d-flex flex-wrap justify-content-between align-items-center">
@@ -668,13 +689,103 @@
 								class="fs-xs ms-1">Sales</span>
 						</div>
 						<div class="bg-faded-accent text-accent rounded-1 py-1 px-2">
-							$18.<small>00</small>
+							<%= ps.MainPage("617").get(0).getGoodPrice() %><small>원</small>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<hr class="my-3">
+
 </div>
+<script>
+function changes1Step(){
+	
+	var select = document.getElementById("bigCategory");
+    var value = select.options[select.selectedIndex].value;
+
+	var num = null;
+	var vnum = null;
+	
+    if(value == "") { // 대분류 value에 따른 소분류 array
+        num = ["전체"];
+        vnum = [""];
+    }else if(value == "030100000") {
+        num = ["전체","정육·난류","채소","생선류"];
+        vnum = ["03010","030101","030102","030103"];
+    }else if(value == "030101000") {
+        num = ["전체","계란","쇠고기","닭고기","돼지고기"];
+        vnum = ["030101","030101001","030101002","030101003","030101004"];
+    }else if(value == "030102000") {
+        num = ["전체","배추","양파","무","포기김치","콩나물","단무지","시금치","당근","감자","고구마","버섯","오이","풋고추","호박","대파","마늘","깻잎","상추","생강","양배추","쪽파","가지"];
+        vnum = ["030102","030102001","030102002","030102003","030102004","030102005","030102006","030102007","030102008","030102009","030102010","030102011","030102012","030102013","030102014","030102015","030102016","030102017","030102018","030102019","030102020","030102021","030102022"];
+    }else if(value == "030103000") {
+        num = ["전체","갈치","참조기","고등어","오징어","삼치"];
+        vnum = ["030103","030103001","030103002","030103003","030103004","030103005"];
+    }else if(value == "030200000") {
+        num = ["전체","곡물가공품","수산가공품","낙농·축산가공품","조미료·장류·식용유","과자·빙과류","차·음료·주류"];
+        vnum = ["03020","030201","030202","030203","030204","030205","030206"];
+    }else if(value == "030201000") {
+        num = ["전체","빵","즉석국","즉석덮밥","냉동만두","밀가루","두부","국수","씨리얼","라면","부침가루","식빵","즉석밥","당면","즉석우동","초밥류","스프","즉석죽","견과류","떡국떡","만두피","컵라면","컵밥","탕"];
+        vnum = ["030201","030201001","030201002","030201004","030201005","030201007","030201008","030201009","030201010","030201011","030201012","030201013","030201014","030201015","030201017","030201018","030201019","030201020","030201021","030201022","03020100023","030201024","030201025","030201026"];
+    }else if(value == "030202000") {
+        num = ["전체","김밥김","어묵","맛살","참치캔","맛김","생선통조림","오징어채"];
+        vnum = ["030202","030202001","030202002","030202003","030202004","030202005","030202006","030202007"];
+    }else if(value == "030103000") {
+        num = ["전체","버터","마가린","소시지","햄류","우유","분유","치즈","발효유"];
+        vnum = ["030103","030103001","030103002","030103003","030103004","030103005","030103006","030103007","030103008"];
+    }else if(value == "030104000") {
+        num = ["전체","식초","벌꿀","과일통조림","참기름","식용유","소금","설탕","혼합조미료","고추장","된장","간장","마요네즈","케찹","카레","딸기잼","쌈장","굴소스","멸치액젓"];
+        vnum = ["030104","030104001","030104002","030104003","030104004","030104005","030104006","030104007","030104008","030104009","030104010","030104011","030104012","030104013","030104014","030104015","030104016","030104017","030104018"];
+    }else if(value == "030205000") {
+        num = ["전체","캔디","크래커","감자칩","새우깡","초코파이","초콜릿","껌","아이스크림","빙과류","모나카류아이스크림","에너지바","초코바"];
+        vnum = ["030205","030205001","030205002","030205003","030205004","030205005","030205006","030205007","030205008","030205009","030205010","030205011","030205012"];
+    }else if(value == "030206000") {
+        num = ["전체","비타민음료","캔커피","커피믹스","녹차류","콜라","사이다","생수","과일주스","두유","맥주","소주","차,음료","생수(묶음)","막걸리","식혜","이온음료","컵커피","에너지음료","탄산수"];
+        vnum = ["030206","030206001","030206002","030206003","030206004","030206005","030206006","030206007","030206008","030206011","030206012","030206013","030206014","030206015","030206016","030206018","0030206019","030206020","030206021","030206022"];
+    }else if(value == "030300000") {
+        num = ["전체","이미용품","세탁·주방·가사용품","의류·신변용품","의약외품"];
+        vnum = ["03030","030301","030302","030303","030304"];
+    }else if(value == "030301000") {
+        num = ["전체","베이비로션","바디워시","두루마리화장지","세면용비누","치약","일반샴푸","일반린스","종이기저귀","생리대","핸드로션","일반면도날","물휴지","썬크림","염색약","손세정제","곽티슈","립케어","칫솔","클렌징폼"];
+        vnum = ["030301","030301001","030301002","030301004","030301006","030301007","030301010","030301011","030301012","030301013","030301016","030301017","030301018","030301019","030301020","030301021","030301022","030301023","030301024","030301025"];
+    }else if(value == "030302000") {
+        num = ["전체","건전지","위생백","섬유탈취제","섬유유연제","주방세제","키친타월","고무장갑","랩","호일","세정제","습기제거제","살균소독제","표백제","부탄까스","살충제","세탁세제(가루형)","세탁세제(액체형)"];
+        vnum = ["030302","030302001","030302002","030302003","030302005","030302006","030302007","030302008","030302009","030302010","030302011","030302012","030302013","030302014","030302015","030302016","030302017","030302018"];
+    }else if(value == "030303000") {
+        num = ["전체"];
+        vnum = ["030303000"];
+    }else if(value == "030304000") {
+        num = ["전체","소화제","피로회복제","구강청정제"];
+        vnum = ["030304","030304001","030304002","030304009"];
+    }
+
+  
+    var selectObj = document.getElementById("smallCategory"); 
+    if ( selectObj == null ) return; // 객체가 존재하지 않으면 취소
+    selectObj.options.length = 0; // 길이를 0으로 하면 초기화
+
+ 
+    $('#smallCategory').empty(); // 소분류 카테고리를 비움
+
+
+    
+    for(var count = 0; count < num.length; count++){ // 만든 num과 vnum 중 선택된 대분류 value에 해당하는 것을 소분류 select박스에 삽입                 
+        var option = $("<option value='"+vnum[count]+"'>"+num[count]+"</option>");
+        $('#smallCategory').append(option);
+    }
+    
+    $("#searchCategory").click(()=>{
+		let code = $("#smallCategory").val().trim();
+
+	
+		let url = '<%=request.getContextPath()%>/searchByCategory?categoryCode=' + code;		
+		$("a").attr("href", url);
+		
+	});
+}
+
+</script>
 
 <%@ include file="../footer.jsp"%>

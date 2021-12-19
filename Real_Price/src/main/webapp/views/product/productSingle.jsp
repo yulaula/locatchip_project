@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="price.model.vo.Price"%>
+<%@ page import="price.model.service.PriceService" %>
 <%@ include file="../header.jsp" %>
+
+<%
+	PriceService ps = new PriceService();
+	List<Price> list = (ArrayList<Price>)request.getAttribute("list");
+	System.out.println(list.get(0).getGoodId());
+%>
 
 
 <!-- Page Title-->
@@ -17,7 +27,7 @@
                     </nav>
                 </div>
                 <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                    <h1 class="h3 text-light mb-0">머거본 꿀땅콩(135g)</h1>
+                    <h1 class="h3 text-light mb-0"><%= ps.productName(list.get(0).getGoodId()) %></h1>
                 </div>
             </div>
         </div>
@@ -30,7 +40,7 @@
                         <div class="pt-3 px-4 pe-lg-0 ps-xl-5">
                             <!-- Product gallery-->
                             <div class="gallery">
-                                <a class="gallery-item rounded-3 mb-grid-gutter" href="<%=request.getContextPath()%>/views/resources/2_img/머거본꿀땅콩.gif" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;확대하기&lt;/h6&gt;"><img src="2_img/머거본꿀땅콩.gif" alt="Gallery preview"><span class="gallery-item-caption">확대하기</span></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="<%=request.getContextPath()%>/views/resources/2_img/<%= list.get(0).getGoodId() %>.png" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;확대하기&lt;/h6&gt;"><img src="<%=request.getContextPath()%>/views/resources/2_img/<%= list.get(0).getGoodId() %>.png" alt="Gallery preview"><span class="gallery-item-caption">확대하기</span></a>
                                 <div class="row">
                                 </div>
                             </div>
@@ -54,9 +64,9 @@
                                         <div class="accordion-header d-flex justify-content-between align-items-center py-3">
                                             <div class="form-check" data-bs-toggle="collapse" data-bs-target="#standard-license">
                                                 <input class="form-check-input" type="radio" name="license" id="license-std" checked>
-                                                <label class="form-check-label fw-medium text-dark" for="license-std">신정시장</label>
+                                                <label class="form-check-label fw-medium text-dark" for="license-std"><%= list.get(0).getEntpId() %></label>
                                             </div>
-                                            <h5 class="mb-0 text-accent fw-normal">2,500<small>원</small></h5>
+                                            <h5 class="mb-0 text-accent fw-normal"><%= list.get(0).getGoodPrice() %><small>원</small></h5>
                                         </div>
                                         <div class="accordion-collapse collapse show" id="standard-license" data-bs-parent="#licenses">
                                             <div class="accordion-body py-0 pb-2">
@@ -70,36 +80,36 @@
                                         <div class="accordion-header d-flex justify-content-between align-items-center py-3">
                                             <div class="form-check" data-bs-toggle="collapse">
                                                 <input class="form-check-input" type="radio" name="license">
-                                                <label class="form-check-label fw-medium text-dark">GS25 마포점</label>
+                                                <label class="form-check-label fw-medium text-dark"><%= list.get(1).getEntpId() %></label>
                                             </div>
-                                            <h5 class="mb-0 text-accent fw-normal">2,940<small>원</small></h5>
+                                            <h5 class="mb-0 text-accent fw-normal"><%= list.get(1).getGoodPrice() %><small>원</small></h5>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <div class="accordion-header d-flex justify-content-between align-items-center py-3">
                                             <div class="form-check" data-bs-toggle="collapse" data-bs-target="#extended-license">
                                                 <input class="form-check-input" type="radio" name="license">
-                                                <label class="form-check-label fw-medium text-dark" for="license-ext">GS25 마포점</label>
+                                                <label class="form-check-label fw-medium text-dark" for="license-ext"><%= list.get(2).getEntpId() %></label>
                                             </div>
-                                            <h5 class="mb-0 text-accent fw-normal">2,940<small>원</small></h5>
+                                            <h5 class="mb-0 text-accent fw-normal"><%= list.get(2).getGoodPrice() %><small>원</small></h5>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <div class="accordion-header d-flex justify-content-between align-items-center py-3">
                                             <div class="form-check" data-bs-toggle="collapse" data-bs-target="#extended-license">
                                                 <input class="form-check-input" type="radio" name="license">
-                                                <label class="form-check-label fw-medium text-dark" for="license-ext">GS25 마포점</label>
+                                                <label class="form-check-label fw-medium text-dark" for="license-ext"><%= list.get(3).getEntpId() %></label>
                                             </div>
-                                            <h5 class="mb-0 text-accent fw-normal">2,940<small>원</small></h5>
+                                            <h5 class="mb-0 text-accent fw-normal"><%= list.get(3).getGoodPrice() %><small>원</small></h5>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <div class="accordion-header d-flex justify-content-between align-items-center py-3">
                                             <div class="form-check" data-bs-toggle="collapse" data-bs-target="#extended-license">
                                                 <input class="form-check-input" type="radio" name="license">
-                                                <label class="form-check-label fw-medium text-dark" for="license-ext">GS25 마포점</label>
+                                                <label class="form-check-label fw-medium text-dark" for="license-ext"><%= list.get(4).getEntpId() %></label>
                                             </div>
-                                            <h5 class="mb-0 text-accent fw-normal">2,940<small>원</small></h5>
+                                            <h5 class="mb-0 text-accent fw-normal"><%= list.get(4).getGoodPrice() %><small>원</small></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -114,8 +124,8 @@
                                     <div class="fs-ms text-muted">Review(74)</div>
                                 </div>
                                 <ul class="list-unstyled fs-sm">
-                                    <li class="d-flex justify-content-between mb-3 pb-3 border-bottom"><span class="text-dark fw-medium">카테고리</span><a class="product-meta" href="#">견과류</a></li>
-                                    <li class="d-flex justify-content-between mb-3 pb-3 border-bottom"><span class="text-dark fw-medium">최근 조사일</span><span class="text-muted">2021년 12월 6일</span></li>
+                                    <li class="d-flex justify-content-between mb-3 pb-3 border-bottom"><span class="text-dark fw-medium">카테고리</span><a class="product-meta" href="#"><%= ps.SearchCategoryName(list.get(0).getGoodId()) %></a></li>
+                                    <li class="d-flex justify-content-between mb-3 pb-3 border-bottom"><span class="text-dark fw-medium">최근 조사일</span><span class="text-muted"><%=list.get(0).getGoodInspectDay() %></span></li>
                                 </ul>
                             </div>
                         </div>
@@ -220,7 +230,6 @@
         <section class="container mb-5 pb-lg-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-4 mb-4">
                 <h2 class="h3 mb-0 pt-2">이 제품은 어떠세요?</h2>
-                <div class="pt-2"><a class="btn btn-outline-accent btn-sm" href="marketplace-category.html">더보기<i class="ci-arrow-end ms-1 me-n1"></i></a></div>
             </div>
             <!-- Carousel-->
             <div class="tns-carousel">
@@ -233,7 +242,7 @@
                                 <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="#"><i class="ci-eye"></i></a>
                                     <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class="ci-cart"></i></button>
                                 </div>
-                                <a class="product-thumb-overlay" href="#"></a><img src="2_img/허니버터아몬드.jpg" alt="Product">
+                                <a class="product-thumb-overlay" href="#"></a><img src="<%=request.getContextPath()%>/views/resources/2_img/허니버터아몬드.jpg" alt="Product">
                             </div>
                             <div class="card-body">
                                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">

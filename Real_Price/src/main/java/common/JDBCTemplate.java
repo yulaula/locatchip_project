@@ -1,5 +1,6 @@
 package common;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,15 +26,20 @@ public class JDBCTemplate {
 		System.out.println(path);
 		path = path.replace("%20", " ");
 		try {
-			FileReader fr = new FileReader(path);
+			File file = new File(path);
+			System.out.println("file.exists() : "+file.exists());
+			System.out.println("ile.canRead() : " + file.canRead());
+			System.out.println(file.getAbsoluteFile());
+			FileReader fr = new FileReader(file.getAbsoluteFile());
 			prop.load(fr);
 			fr.close();
 			
-			driverClass = prop.getProperty("driverClass");
-			url = prop.getProperty("url");
-			user  = prop.getProperty("user");
-			password = prop.getProperty("password");
-			System.out.println(driverClass);
+			driverClass = prop.getProperty("db.driver");
+			url = prop.getProperty("db.url");
+			user  = prop.getProperty("db.username");
+			password = prop.getProperty("db.password");
+			// System.out.println(driverClass);
+			
 			Class.forName(driverClass);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

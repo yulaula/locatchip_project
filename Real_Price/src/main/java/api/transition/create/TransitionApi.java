@@ -25,8 +25,6 @@ import price.model.vo.Price;
 
 public class TransitionApi {
 
-
-
 	//특정 판매점의 특정 물품 또는 특정 판매점의 모든 물품 가격 불러옴. goodId 항목이 null이면 모든 물품
 	public void priceInform(String entpId, String goodId) throws IOException, ClassNotFoundException, SQLException {
 
@@ -126,8 +124,6 @@ public class TransitionApi {
 				e.printStackTrace();
 			}
 		}
-
-
 
 		transitiondao.allPrice(pricelist);
 	}

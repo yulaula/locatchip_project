@@ -5,6 +5,8 @@ import static common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -41,12 +43,6 @@ public class PriceService {
 
 	}
 
-	public String productName(String goodId) {//물품명 출력
-		String productName = priceDao.productName(goodId);
-		return productName;
-		
-	}
-	
 	public List<Price> CategorySearch(String goodSmlclsCode) { // 카테고리별 가격리스트 출력
 		List<Price> list = priceDao.CategorySearch(goodSmlclsCode);
 		return list;
@@ -55,6 +51,20 @@ public class PriceService {
 	public List<Price> GoodNameSearch(String goodName) { // 검색키워드를 포함하는 상품이 있는 경우 리스트 출력
 		List<Price> list = priceDao.sortByLowestPriceProduct(goodName);
 		return list;
+	}
+	
+
+	public List<Price> lowestGoodNameSearch(String goodName) { // 검색키워드 포함하는 상품 리스트 받아온 후 set으로 중복 제거, 다시 list화
+		List<String> list = priceDao.goodIdList(goodName);
+		List<Price> list2 = new ArrayList<Price>();
+		for(String goodId : list) {
+			if(priceDao.mainPriceEach(goodId).getGoodPrice()==0) {
+				continue;
+			}
+			list2.add(priceDao.mainPriceEach(goodId));
+		}
+		return list2;
+		
 	}
 
 	public List<Price> ShopNameSearch(String shopName) {// 검색키워드를 포함하는 점포가 있는 경우 리스트 출력
@@ -99,9 +109,33 @@ public class PriceService {
 		return list;
 	}
 	
+	public String productName(String goodId) {//물품명 출력
+		String productName = priceDao.productName(goodId);
+		return productName;
+		
+	}
+	
+	public List<Price> category(String categoryCode) { // 카테고리 검색 결과화면 - 해당 카테고리의 물품들 중 최저가만 추려서 출력 
+		
+		List<Price> list = new ArrayList<Price>();
+		
+		Set<String> goodIdSet = priceDao.CategoryProductSearch(categoryCode); // 받아온 카테고리 코드 삽입해서 해당하는 다른 물품들 Id 모두 받아옴
+		Iterator<String> iter = goodIdSet.iterator();
+		while(iter.hasNext()) { // set에 담겨있는 물품들 아이디를 돌아가며 최저가를 찾아서 하나씩 리스트에 넣음
+			String recmGoodID = iter.next();
+			Price recommandProduct = priceDao.mainPriceEach(recmGoodID);
+			list.add(recommandProduct);
+		}
+		return list;
+		// 카테고리에 해당하는 물품들 중 가장 최저가를 찾아서 리스트에 담아 출력함
+	}
+
 	
 //	public static void main(String[] args) {
-//		List<Price> price = new PriceService().RecommandProduct("168");
-//		System.out.println(price.toString());
+//		List<Price> list2 = new PriceService().GoodNameSearch("롯데");
+//		System.out.println(list2);
+//		System.out.println("==");
+//		List<Price> list = new PriceService().lowestGoodNameSearch(list2);
+//		System.out.println(list);
 //	}
 }

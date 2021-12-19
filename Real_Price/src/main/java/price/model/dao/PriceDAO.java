@@ -181,10 +181,6 @@ public class PriceDAO {
 	}
 
 
-
-
-
-
 	// goodId로 검색시 낮은 가격별 정렬
 	public List<Price> sortByLowestPrice(String good_Id) {
 		List <Price> list = new ArrayList<Price>();

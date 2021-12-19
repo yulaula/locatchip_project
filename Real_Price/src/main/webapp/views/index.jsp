@@ -49,7 +49,7 @@
                         <img class="product_img " src="<%=request.getContextPath()%>/views/resources/2_img/product.png " alt="product ">
                     </div>
                 </a>
-                <button class="button_category1"><a href="total_product.html">상품별 조회</a></button>
+                <button class="button_category1"><a href="<%=request.getContextPath()%>/views/product/total_product.jsp">상품별 조회</a></button>
             </div>
             <div class="div_categorize_detail ">
                 <a href="total_store.html ">
@@ -57,7 +57,7 @@
                         <img class="store_img " src="<%=request.getContextPath()%>/views/resources/2_img/store.png " alt="product ">
                     </div>
                 </a>
-                <button class="button_category2 "><a href="total_store.html">점포별 조회</a></button>
+                <button class="button_category2 "><a href="<%=request.getContextPath()%>/views/shop/view.jsp">점포별 조회</a></button>
             </div>
             <div class="div_categorize_detail ">
                 <a href="best_product.html ">
@@ -65,7 +65,7 @@
                         <img class="best_img " src="<%=request.getContextPath()%>/views/resources/2_img/best.png" alt="best ">
                     </div>
                 </a>
-                <button class="button_category3 "><a href="best_product.html">인기 BEST</a></button>
+                <button class="button_category3 "><a href="<%=request.getContextPath()%>/views/best_product.jsp">인기 BEST</a></button>
             </div>
         </div>
 

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,22 +26,9 @@
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/vendor/tiny-slider/dist/tiny-slider.css" />
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/css/theme.min.css">
-    <!--main style-->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/1_pagestyle/main.css" />
-    
-    <!-- board & chart -->
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
-
-    <!-- CSS Front Template -->
-    <!-- <link rel="stylesheet" href="assets/css/theme.min.css"> -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/css/snippets.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/vendor/quill/dist/quill.snow.css">
-
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/vendor/simplebar/dist/simplebar.min.css" />
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/vendor/tiny-slider/dist/tiny-slider.css" />
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/vendor/prismjs/themes/prism.css" />
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/vendor/prismjs/plugins/toolbar/prism-toolbar.css" />
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css" />
@@ -70,6 +56,28 @@
     <script src="<%=request.getContextPath()%>/views/resources/vendor/chartist/dist/chartist.min.js"></script>
     <!-- Main theme script-->
     <script src="<%=request.getContextPath()%>/views/resources/js/theme.min.js"></script>
+    
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/views/resources/css/theme.min.css">
+    <!--main style-->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/1_pagestyle/main.css" />
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/css/snippets.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/views/resources/assets/vendor/quill/dist/quill.snow.css">
+
+
 </head>
 
 <!-- Body-->
@@ -129,22 +137,22 @@
                                     <a class="navbar-tool-icon-box dropdown-toggle" style="width: 0px;" href=""><a class="nav-link " href="">상품</a></a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <div style="min-width: 5rem;">
-                                            <a class="dropdown-item d-flex align-items-center" href="total_product.html"><i class="ci-bag opacity-60 me-2"></i>카테고리별 조회</a>
-                                            <a class="dropdown-item d-flex align-items-center" href="total_product_for_store.html"><i class="ci-store opacity-60 me-2"></i>거리별 조회</a>
+                                            <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/views/product/total_product.jsp"><i class="ci-bag opacity-60 me-2"></i>카테고리별 조회</a>
+                                            <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/views/product/product_by_map.jsp"><i class="ci-store opacity-60 me-2"></i>거리별 조회</a>
 
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item "><a class="nav-link " href="total_store.html">점포</a></li>
-                            <li class="nav-item "><a class="nav-link " href="price-statistics.html">가격 추이</a></li>
+                            <li class="nav-item "><a class="nav-link " href="<%=request.getContextPath()%>/views/shop/view.jsp">점포</a></li>
+                            <li class="nav-item "><a class="nav-link " href="<%=request.getContextPath()%>/views/price/price_graph_spam.jsp">가격 추이</a></li>
                             <li class="nav-item "><a class="nav-link " href="event.html">이벤트</a></li>
                             <li class="nav-item ">
                                 <div class="navbar-tool dropdown ms-2">
-                                    <a class="navbar-tool-icon-box dropdown-toggle" style="width: 0px;" href=""><a class="nav-link " href="">게시판</a></a>
+                                    <a class="navbar-tool-icon-box dropdown-toggle" style="width: 0px;" href=""><a class="nav-link" href="">게시판</a></a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <div style="min-width: 5rem;">
-                                            <a class="dropdown-item d-flex align-items-center" href="nanum_board.html"><i class="ci-bag opacity-60 me-2"></i>나눔 게시판</a>
+                                            <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/views/board/share-list.jsp"><i class="ci-bag opacity-60 me-2"></i>나눔 게시판</a>
                                             <a class="dropdown-item d-flex align-items-center" href=""><i class="ci-heart opacity-60 me-2"></i>공동구매 게시판</a>
 
                                         </div>
