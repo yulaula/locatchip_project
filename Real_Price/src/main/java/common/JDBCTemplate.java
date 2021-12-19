@@ -24,10 +24,6 @@ public class JDBCTemplate {
 		String path = JDBCTemplate.class.getResource("./driver.properties").getPath();
 		System.out.println(path);
 		path = path.replace("%20", " ");
-		if(path.startsWith("/") == true) {
-			path = path.substring(1,path.length());
-		}
-		
 		try {
 			FileReader fr = new FileReader(path);
 			prop.load(fr);
