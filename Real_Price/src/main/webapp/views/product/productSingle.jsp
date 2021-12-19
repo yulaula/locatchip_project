@@ -30,7 +30,7 @@
                         <div class="pt-3 px-4 pe-lg-0 ps-xl-5">
                             <!-- Product gallery-->
                             <div class="gallery">
-                                <a class="gallery-item rounded-3 mb-grid-gutter" href="<%=request.getContextPath()%>/resources/2_img/머거본꿀땅콩.gif" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;확대하기&lt;/h6&gt;"><img src="2_img/머거본꿀땅콩.gif" alt="Gallery preview"><span class="gallery-item-caption">확대하기</span></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="<%=request.getContextPath()%>/views/resources/2_img/머거본꿀땅콩.gif" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;확대하기&lt;/h6&gt;"><img src="2_img/머거본꿀땅콩.gif" alt="Gallery preview"><span class="gallery-item-caption">확대하기</span></a>
                                 <div class="row">
                                 </div>
                             </div>

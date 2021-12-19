@@ -54,7 +54,8 @@
                         <table class="table table-hover mb-0 text-center">
                             <thead>
                                 <tr>
-                                    <th style="width: 450px;">제목</th>
+                                    <th>지역</th>
+                                    <th style="width: 440px;">제목</th>
                                     <th>작성자</th>
                                     <th>작성일</th>
                                     <th>조회</th>
@@ -62,30 +63,28 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td class="py-3">서울</td>
                                     <td class="py-3"><a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">나눔해요~</a></td>
                                     <td class="py-3">gildong1234</td>
                                     <td class="py-3">2021-12-04</td>
                                     <td class="py-3">12</td>
                                 </tr>
                                 <tr>
+                                    <td class="py-3">서울</td>
                                     <td class="py-3"><a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">나눔해요~</a></td>
                                     <td class="py-3">gildong1234</td>
                                     <td class="py-3">2021-12-04</td>
                                     <td class="py-3">12</td>
                                 </tr>
                                 <tr>
+                                    <td class="py-3">서울</td>
                                     <td class="py-3"><a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">나눔해요~</a></td>
                                     <td class="py-3">gildong1234</td>
                                     <td class="py-3">2021-12-04</td>
                                     <td class="py-3">12</td>
                                 </tr>
                                 <tr>
-                                    <td class="py-3"><a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">나눔해요~</a></td>
-                                    <td class="py-3">gildong1234</td>
-                                    <td class="py-3">2021-12-04</td>
-                                    <td class="py-3">12</td>
-                                </tr>
-                                <tr>
+                                    <td class="py-3">서울</td>
                                     <td class="py-3"><a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">나눔해요~</a></td>
                                     <td class="py-3">gildong1234</td>
                                     <td class="py-3">2021-12-04</td>

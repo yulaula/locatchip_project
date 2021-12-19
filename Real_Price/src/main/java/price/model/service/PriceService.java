@@ -41,6 +41,12 @@ public class PriceService {
 
 	}
 
+	public String productName(String goodId) {//물품명 출력
+		String productName = priceDao.productName(goodId);
+		return productName;
+		
+	}
+	
 	public List<Price> CategorySearch(String goodSmlclsCode) { // 카테고리별 가격리스트 출력
 		List<Price> list = priceDao.CategorySearch(goodSmlclsCode);
 		return list;
@@ -92,6 +98,7 @@ public class PriceService {
 		List<Price> list = priceDao.TransitionSearch();
 		return list;
 	}
+	
 	
 //	public static void main(String[] args) {
 //		List<Price> price = new PriceService().RecommandProduct("168");

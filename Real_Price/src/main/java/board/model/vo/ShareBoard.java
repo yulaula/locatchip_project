@@ -1,6 +1,7 @@
 package board.model.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class ShareBoard {
 		
@@ -8,39 +9,43 @@ public class ShareBoard {
 	private String postPassword;
 	private String title;
 	private int readCount;
+	private String status;
 	private String content;
 	private String location;
 	private Date postDate;
 	private String writerId;
 	private String shopId;
 	private String productId;
+	private List<ShareReply> replies;
 	
 	public ShareBoard() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ShareBoard(String postNo, String postPassword, String title, int readCount, String content, String location,
-			Date postDate, String writerId, String shopId, String productId) {
+	public ShareBoard(String postNo, String postPassword, String title, int readCount, String status, String content,
+			String location, Date postDate, String writerId, String shopId, String productId, List<ShareReply> replies) {
 		super();
 		this.postNo = postNo;
 		this.postPassword = postPassword;
 		this.title = title;
 		this.readCount = readCount;
+		this.status = status;
 		this.content = content;
 		this.location = location;
 		this.postDate = postDate;
 		this.writerId = writerId;
 		this.shopId = shopId;
 		this.productId = productId;
+		this.replies = replies;
 	}
 
-	public String getPostNum() {
+	public String getPostNo() {
 		return postNo;
 	}
 
-	public void setPostNum(String postNum) {
-		this.postNo = postNum;
+	public void setPostNo(String postNo) {
+		this.postNo = postNo;
 	}
 
 	public String getPostPassword() {
@@ -65,6 +70,14 @@ public class ShareBoard {
 
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getContent() {
@@ -115,13 +128,17 @@ public class ShareBoard {
 		this.productId = productId;
 	}
 
+	public List<ShareReply> getReplies() {
+		return replies;
+	}
+	public void setReplies(List<ShareReply> replies) {
+		this.replies = replies;
+	}
+	
 	@Override
 	public String toString() {
 		return "ShareBoard [postNo=" + postNo + ", postPassword=" + postPassword + ", title=" + title + ", readCount="
-				+ readCount + ", content=" + content + ", location=" + location + ", postDate=" + postDate
-				+ ", writerId=" + writerId + ", shopId=" + shopId + ", productId=" + productId + "]";
+				+ readCount + ", status=" + status + ", content=" + content + ", location=" + location + ", postDate="
+				+ postDate + ", writerId=" + writerId + ", shopId=" + shopId + ", productId=" + productId + ", replies=" + replies + "]";
 	}
-	
-	
-	
 }

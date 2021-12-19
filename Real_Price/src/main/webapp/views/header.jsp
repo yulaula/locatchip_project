@@ -87,19 +87,35 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse"
                             data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
                             <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a>
+                        <!-- after login -->
                         <div class="navbar-tool dropdown ms-2">
+                            <!--일반 로그인-->
                             <a class="navbar-tool-icon-box dropdown-toggle" href="account-orders.html"><i class="navbar-tool-icon ci-user"></i></a>
+                            <!--판매점 로그인-->
+                            <!--<a class="navbar-tool d-none d-lg-flex" href="dashboard-products.html"><span class="navbar-tool-tooltip">My page</span><div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-store"></i></div></a>-->
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div style="min-width: 14rem;">
-                                    <h6 class="dropdown-header">주문</h6><a class="dropdown-item d-flex align-items-center" href="dashboard-settings.html"><i class="ci-bag opacity-60 me-2"></i>예약 내역<span class="fs-xs text-muted ms-auto">2</span></a>
+                                    <h6 class="dropdown-header">주문</h6><a class="dropdown-item d-flex align-items-center" href="account-orders.html"><i class="ci-bag opacity-60 me-2"></i>예약 내역<span class="fs-xs text-muted ms-auto">2</span></a>
                                     <div class="dropdown-divider"></div>
                                     <h6 class="dropdown-header">계정</h6><a class="dropdown-item d-flex align-items-center" href="account-profile.html"><i class="ci-user opacity-60 me-2"></i>회원정보 수정</a>
-                                    <a class="dropdown-item d-flex align-items-center" href="account-payment.html"><i class="ci-card opacity-60 me-2"></i>결제 방식</a>
+
                                     <div class="dropdown-divider"></div><a class="dropdown-item d-flex align-items-center" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>로그아웃</a>
                                 </div>
                             </div>
+                            <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a></div>
                         </div>
-                        <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a></div>
+                        <!-- before login -->
+                        <!-- <div class="navbar-tool dropdown ms-2">
+                            <a class="navbar-tool-icon-box dropdown-toggle" href=""><i class="navbar-tool-icon ci-user"></i></a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div style="min-width: 14rem;">
+                                    <a class="dropdown-item d-flex align-items-center" href="signin.html"><i class="ci-sign-in opacity-60 me-2 "></i>로그인</a>
+                                    <a class="dropdown-item d-flex align-items-center" href="signup.html"><i class="ci-add-user opacity-60 me-2 "></i>회원가입</a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label"></span><i class="navbar-tool-icon ci-cart"></i></a></div> -->
+
                     </div>
                     <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
                         <!-- Search-->
@@ -113,8 +129,8 @@
                                     <a class="navbar-tool-icon-box dropdown-toggle" style="width: 0px;" href=""><a class="nav-link " href="">상품</a></a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <div style="min-width: 5rem;">
-                                            <a class="dropdown-item d-flex align-items-center" href="total_product.html"><i class="ci-bag opacity-60 me-2"></i>상품별 조회</a>
-                                            <a class="dropdown-item d-flex align-items-center" href="total_product_for_store.html"><i class="ci-store opacity-60 me-2"></i>점포별 조회</a>
+                                            <a class="dropdown-item d-flex align-items-center" href="total_product.html"><i class="ci-bag opacity-60 me-2"></i>카테고리별 조회</a>
+                                            <a class="dropdown-item d-flex align-items-center" href="total_product_for_store.html"><i class="ci-store opacity-60 me-2"></i>거리별 조회</a>
 
                                         </div>
                                     </div>

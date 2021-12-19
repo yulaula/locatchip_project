@@ -19,6 +19,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import common.JDBCTemplate;
+import common.JDBCTemplate.*;
 
 public class CategoryApi {
 
@@ -30,9 +31,6 @@ public class CategoryApi {
 		urlBuilder.append("&" + URLEncoder.encode("serviceKey", "UTF-8")
 				+ "=Y7ueDZ39NLBs1KC8LG7vU9vMskkOUSItpwwzFtQfoyGAuic4UtAJaqvaEQq00KgNNaIbzamWrkdY6XkoKDJ2jw%3D%3D"); 
 		
-		
-		
-
 		List<Category> categorylist = new ArrayList<Category>();
 		CategoryUpdateDB catedao = new CategoryUpdateDB(JDBCTemplate.getConnection());
 

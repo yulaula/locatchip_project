@@ -1,7 +1,8 @@
 package board.model.vo;
+
 import java.util.Date;
 
-public class Reply {
+public class ShareReply {
 	private int no;
 	private int boardNo;
 	private int writerNo;
@@ -10,7 +11,12 @@ public class Reply {
 	private Date createDate;
 	private Date modifyDate;
 
-	public Reply(int no, int boardNo, int writerNo, String writerId, String content, Date createDate, Date modifyDate) {
+	public ShareReply() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ShareReply(int no, int boardNo, int writerNo, String writerId, String content, Date createDate, Date modifyDate) {
 		super();
 		this.no = no;
 		this.boardNo = boardNo;
@@ -20,16 +26,7 @@ public class Reply {
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
 	}
-
-	public Reply() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "Reply [no=" + no + ", boardNo=" + boardNo + ", writerNo=" + writerNo + ", writerId=" + writerId
-				+ ", content=" + content + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
-	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -72,5 +69,10 @@ public class Reply {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-}
+	
+	@Override
+	public String toString() {
+		return "Reply [no=" + no + ", boardNo=" + boardNo + ", writerNo=" + writerNo + ", writerId=" + writerId
+				+ ", content=" + content + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
+	}
 }

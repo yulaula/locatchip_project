@@ -76,6 +76,15 @@
                             </div>
                         </div>
                         <!-- End Form -->
+                        
+                        <!-- Form -->
+                        <div class="row mb-4">
+                            <label for="submitAppWebsite" class="col-sm-3 col-form-label form-label">지역</label>
+                            <div class="col-sm-9">
+                                <p>서울시</p>
+                            </div>
+                        </div>
+                        <!-- End Form -->
 
                         <!-- Form -->
                         <div class="row mb-4">

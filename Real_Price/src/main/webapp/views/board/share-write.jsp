@@ -35,7 +35,7 @@
     <!-- START CONTENTS-->
 
 
-    <!-- Form Card -->
+   <!-- Form Card -->
     <div class="container content-space-2 content-space-lg-3">
         <div class="w-lg-75 mx-lg-auto">
             <!-- Heading -->
@@ -64,6 +64,18 @@
                             <label for="submitAppWebsite" class="col-sm-3 col-form-label form-label">비밀번호</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control form-control-lg" id="submitAppWebsite" placeholder="비밀번호를 입력하세요." aria-label="비밀번호를 입력하세요.">
+                            </div>
+                        </div>
+                        <!-- End Form -->
+
+                        <!-- Form -->
+                        <div class="row mb-3">
+                            <label for="submitAppWebsite" class="col-sm-3 col-form-label form-label">지역</label>
+                            <div class="col-sm-9">
+                                <select class="form-select form-select-sm me-2" style="width:auto">
+                                    <option>서울시</option>
+                                    <option>경기도</option>
+                                </select>
                             </div>
                         </div>
                         <!-- End Form -->

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-4 text-center text-md-start mb-4">
                     <div class="text-nowrap mb-3">
-                        <a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="2_img/logo.png" width="117" alt="Cartzilla"></a>
+                        <a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="<%=request.getContextPath()%>/views/resources/2_img/logo.png" width="117" alt="Cartzilla"></a>
                     </div>
                     <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">65,478 </span><span class="fw-normal text-dark">Products</span></h6>
                     <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">2,521 </span><span class="fw-normal text-dark">Stores</span></h6>

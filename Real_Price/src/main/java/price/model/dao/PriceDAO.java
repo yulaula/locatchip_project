@@ -10,38 +10,30 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import common.JDBCTemplate;
 import price.model.vo.Price;
 import product.model.vo.Product;
-import static common.JDBCTemplate.*;
 
 
 public class PriceDAO {
 	private Connection conn = null;
 	private Properties prop = null;
 
+
+	{
+		prop = JDBCTemplate.getProperties();
+	}
+
 	public PriceDAO (Connection conn){
 		this.conn = conn;
-		prop = new Properties();
-		FileReader fr;
-		FileReader fr2;
-		try {
-			fr = new FileReader("./resources/data-source.properties");
-			fr2 = new FileReader("./resources/query.properties");
-			prop.load(fr);
-			prop.load(fr2);
-			fr.close();
-			fr2.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}
 
-	// 메인 화면 구현을 위한 물품 아이디 목록 생성 - 쓸모없어졌는데 혹시몰라 일단 둡니다
-	public List<String> goodIdList(String good_Id) {
+	// 물품키워드 포함하는 이름을 가진 물품의 good_id를 중복없이 추출
+	public List<String> goodIdList(String goodName) {
 
 		List<String> list = new ArrayList<String>();
 		PreparedStatement pstmt = null;
@@ -49,9 +41,10 @@ public class PriceDAO {
 
 		try {
 			String sql = prop.getProperty("GOOD_ID_LIST");
-			// SELECT GOOD_ID FROM PRODUCTS_INFO
+			// SELECT GOOD_ID FROM PRODUCTS_INFO WHERE GOOD_NAME LIKE '%'||?||'%'
 
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, goodName);
 
 
 			rs = pstmt.executeQuery(); // 쿼리 실행문
@@ -112,9 +105,44 @@ public class PriceDAO {
 		return list; 
 	}
 
+	// 물품아이디 검색시 물품명 리턴
+	public String productName(String good_Id) {
+
+		String goodName = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+
+			String sql = prop.getProperty("PRODUCT_NAME");
+			// SELECT GOOD_NAME FROM PRODUCTS_INFO WHERE GOOD_ID = ?
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, good_Id); 
+
+			rs = pstmt.executeQuery(); 
+
+			if(rs.next()) {
+				goodName = rs.getString("GOOD_NAME");
+			};
+
+			
+
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return goodName; 
+	}
+
+
 	// 각 물픔마다 낮은 가격 상위 1개 리턴
 	public Price mainPriceEach(String good_Id) {
-		Price price = null;
+		Price price = new Price();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -129,17 +157,19 @@ public class PriceDAO {
 
 			rs = pstmt.executeQuery(); 
 
-			rs.next();
+			if(rs.next()) {
+				String goodInspectDay = rs.getString("GOOD_INSPECT_DAY");
+				int goodPrice = rs.getInt("GOOD_PRICE");
+				String plusoneYn = rs.getString("PLUSONE_YN");
+				String goodDcYn = rs.getString("GOOD_DC_YN");
+				String goodId = rs.getString("GOOD_ID");
+				String entpId = rs.getString("ENTP_ID");
 
-			String goodInspectDay = rs.getString("GOOD_INSPECT_DAY");
-			int goodPrice = rs.getInt("GOOD_PRICE");
-			String plusoneYn = rs.getString("PLUSONE_YN");
-			String goodDcYn = rs.getString("GOOD_DC_YN");
-			String goodId = rs.getString("GOOD_ID");
-			String entpId = rs.getString("ENTP_ID");
+
+				price = new Price(goodInspectDay, goodPrice, plusoneYn,goodDcYn, goodId, entpId);
+			}
 
 
-			price = new Price(goodInspectDay, goodPrice, plusoneYn,goodDcYn, goodId, entpId);
 
 			rs.close();
 			pstmt.close();
@@ -659,11 +689,11 @@ public class PriceDAO {
 		return list; 
 	}
 
-//	public static void main(String[] args) {
-//
-//		Price price = new PriceDAO(getConnection()).mainPriceEach("168");
-//		System.out.println(price.toString());
-//	}
+	//	public static void main(String[] args) {
+	//
+	//		Price price = new PriceDAO(getConnection()).mainPriceEach("168");
+	//		System.out.println(price.toString());
+	//	}
 
 
 }
