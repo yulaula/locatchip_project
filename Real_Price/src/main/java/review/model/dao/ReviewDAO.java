@@ -27,19 +27,7 @@ public class ReviewDAO {
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}
-	
-	/*
-	 * private String reviewNo;
-	private String reviewPw;
-	private String title;
-	private String content;
-	private Date postDate;
-	private String starScore;
-	private String memberId;
-	private String goodId;
-	 */
-	
-	
+
 	// 리뷰 작성시 insert
 	public int insertReview(Review review) {
 		int result = 0;
@@ -51,6 +39,7 @@ public class ReviewDAO {
 
 			pstmt = conn.prepareStatement(sql);
 
+			// pstmt.setString(1, "REVIEW" + REVIEW_INDEX.NEXTVAL);
 			pstmt.setString(1, review.getReviewNo());
 			pstmt.setString(2, review.getReviewPw());
 			pstmt.setString(3, review.getTitle());

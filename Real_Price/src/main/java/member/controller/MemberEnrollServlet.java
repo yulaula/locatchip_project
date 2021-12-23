@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
-@WebServlet(name="enroll" ,urlPatterns = "/member/enroll")
-public class UserEnrollServlet extends HttpServlet {
+@WebServlet(name="enroll" ,urlPatterns = "/enroll")
+public class MemberEnrollServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	MemberService service = new MemberService();
@@ -27,18 +27,18 @@ public class UserEnrollServlet extends HttpServlet {
 		Member member = new Member();
 	
 		try { 
-			member.setMemberId(req.getParameter("MEMBER_ID"));
-			member.setPassword(req.getParameter("PASSWORD"));
-			member.setMemberName(req.getParameter("NAME"));
-	    	member.setPhone(req.getParameter("PHONE"));
-	    	member.setAddress(req.getParameter("ADDRESS"));
-	    	member.setEmail(req.getParameter("EMAIL"));
+			member.setMemberId(req.getParameter("memberId"));
+			member.setPassword(req.getParameter("memberPwd"));
+			member.setMemberName(req.getParameter("memberName"));
+	    	member.setPhone(req.getParameter("phone"));
+	    	member.setAddress(req.getParameter("address"));
+	    	member.setEmail(req.getParameter("email"));
 	    	
 			System.out.println(member.toString());
 			
 		} catch (Exception e) {
-			req.setAttribute("msg", "회원가입 실패!");
-			req.setAttribute("location", "/member/enroll");
+			req.setAttribute("msg", "회원가입 실패하셨습니다.");
+			req.setAttribute("location", "/enroll");
 			req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);
     		return;
 		}
@@ -46,11 +46,11 @@ public class UserEnrollServlet extends HttpServlet {
 		int result = service.insertUser(member);
 		
 		if(result > 0) {
-			req.setAttribute("msg", "회원가입 성공!");
-			req.setAttribute("location", "/");
+			req.setAttribute("msg", "회원가입 되었습니다. 로그인 해주세요.");
+			req.setAttribute("location", "/"); // index로 돌아가는 방법.. 어떻게?
 		}else {
-			req.setAttribute("msg", "회원가입 실패!");
-			req.setAttribute("location", "/member/enroll");
+			req.setAttribute("msg", "회원가입 실패하셨습니다.");
+			req.setAttribute("location", "/enroll");
 		}
 		req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);
 	}

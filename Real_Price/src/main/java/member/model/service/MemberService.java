@@ -85,18 +85,29 @@ public class MemberService {
 		return result;
 	}
 
-	public Member login(String uSERID, String pASSWORD) {
-		if (uSERID == null) {
+	public Member login(String memberId, String password) {
+		if (memberId == null) {
 			return null;
 		}
 		
-		Member member = memberDao.selectOne(uSERID);
-		
-		
-		if(member.getMemberId().equals(uSERID) && member.getPassword().equals(pASSWORD)) {
+		Member member = memberDao.findMemberById(memberId);
+				
+		if(member != null && member.getPassword().equals(password) == true) {
 			return member;
 		}else {
 			return null;
+		}
+	}
+
+	public boolean isDuplicated(String memberId) {
+		Connection conn = getConnection();
+		Member member = memberDao.findMemberById(memberId);
+		close(conn);
+		
+		if(member != null) {
+			return true;
+		}else {
+			return false;
 		}
 	}
 

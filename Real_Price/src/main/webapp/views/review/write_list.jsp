@@ -2,21 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
+<%
+	
+%>
+
 <!-- Page Title-->
 <div class="page-title-overlap bg-purple pt-4">
 	<div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-		<div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-			<nav aria-label="breadcrumb">
-				<ol
-					class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-					<li class="breadcrumb-item"><a class="text-nowrap"
-						href="index.html"><i class="ci-home"></i>Home</a></li>
-					<li class="breadcrumb-item text-nowrap"><a
-						href="shop-grid-ls.html">Shop</a></li>
-					<li class="breadcrumb-item text-nowrap active" aria-current="page">Checkout</li>
-				</ol>
-			</nav>
-		</div>
 		<div class="order-lg-1 pe-lg-4 text-center text-lg-start">
 			<h1 class="h3 text-light mb-0">후기 작성</h1>
 		</div>
@@ -35,10 +27,6 @@
 						<i class="ci-cart"></i>장바구니
 					</div>
 				</a>
-				<!-- <a class="step-item active" href="checkout-details.html">
-                            <div class="step-progress"><span class="step-count">2</span></div>
-                            <div class="step-label"><i class="ci-user-circle"></i>결제 정보</div>
-                        </a> -->
 				<a class="step-item active" href="checkout-payment.html">
 					<div class="step-progress">
 						<span class="step-count">2</span>
@@ -57,6 +45,7 @@
 			</div>
 			<!-- Order details-->
 			<h2 class="h6 pt-1 pb-3 mb-3 border-bottom">후기 작성</h2>
+			
 			<!-- Item-->
 			<div
 				class="d-sm-flex justify-content-between my-4 pb-3 border-bottom">

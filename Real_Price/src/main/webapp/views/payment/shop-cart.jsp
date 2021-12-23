@@ -13,7 +13,7 @@
 PriceService ps = new PriceService();
 List<Price> priceList = (ArrayList<Price>) request.getAttribute("priceList");
 BasketService bs = new BasketService();
-List<Basket> basketList = (ArrayList<Basket>) request.getAttribute("basketList");
+Basket basket = bs.findBasketByMemberId(loginMember.getMemberId());
 List<BasketDetail> basketDetailList = (ArrayList<BasketDetail>) request.getAttribute("basketDetailList");
 System.out.println(basketList.get(0).getBasketIndex());
 System.out.println(basketDetailList.get(0).getBdIndex());
@@ -60,7 +60,8 @@ System.out.println(basketDetailList.get(0).getBdIndex());
 							<i class="ci-home opacity-60 me-2"></i><%= //shop리턴하는 것 %>
 						</div>
 						<div class="fs-lg text-accent pt-2">
-							<%= bs.getBasketDetailPrice(basketDetailList.get(i).getBdIndex()) %><small>원</small>
+							<%= bs.getBasketDetailPrice(basketDetailList.get(i).getBdIndex()) %>
+							<small>원</small>
 						</div>
 					</div>
 				</div>
@@ -68,10 +69,10 @@ System.out.println(basketDetailList.get(0).getBdIndex());
 					class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start"
 					style="max-width: 9rem;">
 					<label class="form-label" for="quantity1">수량</label> <input
-						class="form-control" type="number" id="quantity1" min="1"
+						class="form-control" type="number" id="quantity1" name="quantity1" min="1"
 						value="1">
 					<button class="btn btn-link px-0 text-danger" type="button" 
-					onclick="location.href='<%= bs.updateQuantity(//위에 입력한 수량 변수, bDetail) %>'">
+					onclick="location.href=''"> <!-- 수량변경 버튼 -->
 						<i class="ci-check-circle me-2"></i><span class="fs-sm">수정</span>
 					</button>
 
@@ -91,18 +92,18 @@ System.out.println(basketDetailList.get(0).getBdIndex());
 					<div class="text-center mb-4 pb-3 border-bottom">
 						<h2 class="h6 mb-3 pb-1">주문 금액</h2>
 						<h3 class="fw-normal">
-							136,300<small>원</small>
+							<%= bs.getBasketTotalPrice(loginMember.getId()) %><small>원</small>
 						</h3>
 					</div>
 					<div class="mb-3 mb-4">
 						<label class="form-label mb-3" for="order-comments"><span
 							class="badge bg-info fs-xs me-2">픽업 요청사항</span><span
 							class="fw-medium">메세지를 입력해주세요.</span></label>
-						<textarea class="form-control" rows="6" id="order-comments"></textarea>
+						<textarea class="form-control" rows="6" name="input_comment" id="order-comments"></textarea>
 					</div>
 				</div>
 				<a class="btn btn-primary btn-shadow d-block w-100 mt-4"
-					href="checkout-details.html"><i class="ci-card fs-lg me-2"></i>결제하기</a>
+					href="<%= request.getContextPath()%>/paymentView?basketIndex=<%=basket.getBasketIndex()%>"><i class="ci-card fs-lg me-2"></i>결제하기</a>
 			</div>
 		</aside>
 	</div>

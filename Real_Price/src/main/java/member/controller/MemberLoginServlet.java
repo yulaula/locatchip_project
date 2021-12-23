@@ -21,31 +21,34 @@ public class MemberLoginServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String USERID = req.getParameter("USERID");
-		String PASSWORD = req.getParameter("PASSWORD");
+		String memberId = req.getParameter("memberId");
+		String memberPwd = req.getParameter("memberPwd");
 		String saveID = req.getParameter("saveId");
 	
-		System.out.println(USERID + ", "+PASSWORD+", " + saveID);
+		System.out.println(memberId + ", " + memberPwd + ", " + saveID);
 		
-		Member loginMember = service.login(USERID, PASSWORD);
+		Member loginMember = service.login(memberId, memberPwd);
 		
-		if(saveID != null) {
-			Cookie cookie = new Cookie("saveId", USERID);
+		if(saveID != null) { // 아이디 저장
+			Cookie cookie = new Cookie("saveId", memberId);
     		cookie.setMaxAge(60*60);
     		resp.addCookie(cookie); 
-		}else {
+    		System.out.println("아이디 저장함");
+		}else { // 아이디 저장 안함
 			Cookie cookie = new Cookie("saveId", "");
     		cookie.setMaxAge(0);
     		resp.addCookie(cookie); 
+    		System.out.println("아이디 저장안함");
 		}
 		
-		if(loginMember != null ) {
+		// 로그인 기능
+		if(loginMember != null ) { // 로그인 성공
 			HttpSession session =  req.getSession();
 			session.setAttribute("loginMember", loginMember);
 
-			resp.sendRedirect(req.getContextPath()+"/");
-		}else {
-			req.setAttribute("msg", "사용자 아이디나 비밀번호가 맞지 않습니다!");
+			resp.sendRedirect(req.getContextPath()+"/"); // 메인페이지??
+		}else { // 로그인 실패
+			req.setAttribute("msg", "사용자 아이디 또는 비밀번호가 일치하지 않습니다.");
 			req.setAttribute("location", "/");
 			
 			req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);

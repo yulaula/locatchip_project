@@ -6,32 +6,29 @@ public class Member {
 	private String memberId;
 	private String password;
 	private String memberName;
-	private String email;
 	private String phone;
 	private String address;
-	//private String nickname;
+	private String email;
 	//private java.sql.Date enrollDate;
 
 	public Member() {
 		super();
 	}
 
-	public Member(String memberId, String password, String memberName, String email, String phone, String address) {
+	public Member(String memberId, String password, String memberName, String phone, String address, String email) {
 		super();
 		this.memberId = memberId;
 		this.password = password;
 		this.memberName = memberName;
-		this.email = email;
 		this.phone = phone;
 		this.address = address;
-		//this.nickname = nickname;
-		//this.enrollDate = enrollDate;
+		this.email = email;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "user [memberId=" + memberId + ", password=" + password + ", memberName=" + memberName
-				+ ", email=" + email + ", phone=" + phone + ", address=" + address + "]";
+		return "Member [memberId=" + memberId + ", password=" + password + ", memberName=" + memberName + ", phone="
+				+ phone + ", address=" + address + ", email=" + email + "]";
 	}
 
 	public String getMemberId() {
@@ -58,14 +55,6 @@ public class Member {
 		this.memberName = memberName;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -82,5 +71,12 @@ public class Member {
 		this.address = address;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 		
 }

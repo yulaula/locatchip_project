@@ -3,7 +3,6 @@ package member.model.dao;
 
 import java.io.FileReader;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import member.model.vo.Member;
 public class MemberDao {
 	private Connection conn = null;
 	private Properties prop = null;
-	
+
 	{
 		prop = JDBCTemplate.getProperties();
 	}
@@ -36,6 +35,7 @@ public class MemberDao {
 		ResultSet rs = null;
 		try {
 			String sql = prop.getProperty("selectAll");
+			// SELECT * FROM MEMBER
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next() == true) {
@@ -43,29 +43,28 @@ public class MemberDao {
 				String password = rs.getString("PASSWORD");
 				String userName = rs.getString("NAME");
 				String email = rs.getString("EMAIL");
-				String phone = rs.getString("PHONE_NUMBER");
+				String phone = rs.getString("PHONE");
 				String address = rs.getString("ADDRESS");
 				Member m = new Member(memberId, password, userName, email, phone, address);
 				list.add(m);
 			}
-			return list;
+			
+			rs.close();
+			pstmt.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			try {
-				rs.close();
-				pstmt.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
 		}
 		return list;
 	}
 
 	public Member selectOne(String id) {
+		Member member = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			String sql = prop.getProperty("selcetOne");
+			// SELECT * FROM MEMBER WHERE MEMBER_ID = ? ORDER BY DESC
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -75,21 +74,18 @@ public class MemberDao {
 			String password = rs.getString("PASSWORD");
 			String userName = rs.getString("NAME");
 			String email = rs.getString("EMAIL");
-			String phone = rs.getString("PHONE_NUMBER");
+			String phone = rs.getString("PHONE");
 			String address = rs.getString("ADDRESS");
-			Member user = new Member(memberId, password, userName, email, phone, address);
-			return user;
+
+			member = new Member(memberId, password, userName, email, phone, address);
+
+			rs.close();
+			pstmt.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			try {
-				rs.close();
-				pstmt.close();
-				conn.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
 		}
-		return null;
+		return member;
 	}
 
 	public int insertMember(Member m) {
@@ -97,16 +93,16 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = prop.getProperty("insertUser");
-
+			String sql = prop.getProperty("insertMember");
+			// INSERT INTO MEMBER VALUES(?, ?, ?, ?, ?, ?)
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, m.getMemberId());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getMemberName());
-			pstmt.setString(4, m.getEmail());
-			pstmt.setString(5, m.getPhone());
-			pstmt.setString(6, m.getAddress());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getAddress());
+			pstmt.setString(6, m.getEmail());
 
 			result = pstmt.executeUpdate();
 
@@ -123,7 +119,8 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = prop.getProperty("deleteUser");
+			String sql = prop.getProperty("deleteMember");
+			// DELETE FROM MEMBER WHERE MEMBER_ID = ?
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			result = pstmt.executeUpdate();
@@ -141,26 +138,58 @@ public class MemberDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = prop.getProperty("updateUser");
+			String sql = prop.getProperty("updateMember");
+			// UPDATE USER SET MEMBER_ID = ?, PASSWORD = ?, NAME = ?, PHONE = ?, ADDRESS = ?, EMAIL = ?
+
 			pstmt = conn.prepareStatement(sql);
+
 			pstmt.setString(1, m.getMemberId());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getMemberName());
-			pstmt.setString(4, m.getEmail());
-			pstmt.setString(5, m.getPhone());
-			pstmt.setString(6, m.getAddress());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getAddress());
+			pstmt.setString(6, m.getEmail());
 
 			result = pstmt.executeUpdate();
-			return result;
+			
+			pstmt.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			try {
-				pstmt.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
+			
 		}
 		return result;
+	}
+
+	public Member findMemberById(String id) {
+		Member member = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = prop.getProperty("findMemberById");
+			// SELECT * FROM MEMBER WHERE MEMBER_ID=?
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+
+			String memberId = rs.getString("MEMBER_ID");
+			String password = rs.getString("PASSWORD");
+			String userName = rs.getString("NAME");
+			String phone = rs.getString("PHONE");
+			String address = rs.getString("ADDRESS");
+			String email = rs.getString("EMAIL");
+			
+			member = new Member(memberId, password, userName, phone, address, email);
+
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return member;
 	}
 
 	/*
@@ -201,5 +230,5 @@ public class MemberDao {
 		}
 		return null;
 	}
-	*/
+	 */
 }

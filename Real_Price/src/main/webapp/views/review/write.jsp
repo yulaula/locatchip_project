@@ -32,14 +32,11 @@
     <!-- ========== END HEADER ========== -->
 
 
-    <!-- START CONTENTS-->
-
-
     <!-- Form Card -->
     <div class="container content-space-2 content-space-lg-3">
         <div class="w-lg-75 mx-lg-auto">
             <!-- Heading -->
-            <div class="text-center mb-7">
+            <div class="text-center mb-7"><br><br>
                 <h2 class="card-title">후기</h2>
             </div>
             <!-- End Heading -->
@@ -48,22 +45,31 @@
             <div class="card card-bordered shadow-none">
                 <div class="card-body">
                     <!-- Form -->
-                    <form>
+                    <form action="<%= request.getContextPath()%>/reviewWrite" method="POST">
 
                         <!-- Form -->
                         <div class="row mb-3">
                             <label for="submitAppProjectName" class="col-sm-3 col-form-label">제목</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control form-control-lg" id="submitAppProjectName" placeholder="제목을 입력하세요." aria-label="제목을 입력하세요.">
+                                <input type="text" class="form-control form-control-lg" name="title" id="title" placeholder="제목을 입력하세요." aria-label="제목을 입력하세요.">
                             </div>
                         </div>
                         <!-- End Form -->
 
+						<!-- Form -->
+                        <div class="row mb-3">
+                            <label for="submitAppProjectName" class="col-sm-3 col-form-label">작성자</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-lg" name="writer" value="<%= loginMember.getMemberId() %>" readonly>
+                            </div>
+                        </div>
+                        <!-- End Form -->
+                        
                         <!-- Form -->
                         <div class="row mb-3">
                             <label for="submitAppWebsite" class="col-sm-3 col-form-label form-label">비밀번호</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control form-control-lg" id="submitAppWebsite" placeholder="비밀번호를 입력하세요." aria-label="비밀번호를 입력하세요.">
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="비밀번호를 입력하세요." aria-label="비밀번호를 입력하세요.">
                             </div>
                         </div>
                         <!-- End Form -->
@@ -98,7 +104,7 @@
                             <div class="col-sm-9">
                                 <!-- Quill -->
                                 <div class="quill-custom">
-                                    <div class="js-quill" style="height: 15rem;" data-hs-quill-options='{
+                                    <div class="js-quill" name="reviewContent" style="height: 15rem;" data-hs-quill-options='{
                        "placeholder": "내용을 입력해주세요.",
                         "modules": {
                           "toolbar": [

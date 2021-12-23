@@ -69,8 +69,7 @@
 			<!-- Search-->
 			<div class="input-group">
 				<form action="<%=request.getContextPath()%>/searchByProductName" method="POST">
-					<i
-						class="ci-search position-absolute top-50 start-0 translate-middle-y fs-md ms-3"></i>
+					<i class="ci-search position-absolute top-50 start-0 translate-middle-y fs-md ms-3"></i>
 
 					<input class="form-control border-0 shadow-none" type="text"
 						id="productName" name="productName" placeholder="상품을 입력해주세요.">

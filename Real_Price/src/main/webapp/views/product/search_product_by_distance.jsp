@@ -1,17 +1,19 @@
+<%@page import="shop.model.service.ShopService"%>
+<%@page import="shop.model.vo.ShopDistance"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="price.model.service.PriceService"%>
+<%@page import="price.model.vo.Price"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    
 <%@ include file="../header.jsp"%>
 
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="shop.model.vo.Shop"%>
-<%@ page import="shop.model.service.ShopService" %>
-<%@ include file="../header.jsp" %>
 
 <%
 	ShopService ss = new ShopService();
-	List<Shop> list = (ArrayList<Shop>)request.getAttribute("list");
-	System.out.println(list.get(0).getEntpId());
+	PriceService ps = new PriceService();
+	List<ShopDistance> list = (ArrayList<ShopDistance>)request.getAttribute("list");
 %>
 
 <!-- Used for marketplace templates with filters on top-->

@@ -72,8 +72,6 @@ public class PriceDAO {
 		ResultSet rs = null;
 
 		try {
-
-
 			String sql = prop.getProperty("MAIN_PRICE");
 			// SELECT * FROM (SELECT * FROM COST_INFO WHERE GOOD_ID = ? ORDER BY GOOD_PRICE ASC) WHERE ROWNUM <= 5
 
@@ -114,7 +112,6 @@ public class PriceDAO {
 
 		try {
 
-
 			String sql = prop.getProperty("PRODUCT_NAME");
 			// SELECT GOOD_NAME FROM PRODUCTS_INFO WHERE GOOD_ID = ?
 
@@ -126,9 +123,6 @@ public class PriceDAO {
 			if(rs.next()) {
 				goodName = rs.getString("GOOD_NAME");
 			};
-
-			
-
 
 			rs.close();
 			pstmt.close();

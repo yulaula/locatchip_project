@@ -1,5 +1,11 @@
+<%@page import="member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	Member loginMember = (Member)session.getAttribute("loginMember");
+%>    
+    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -96,12 +102,12 @@
                             data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
                             <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a>
                         <!-- after login -->
-                        <div class="navbar-tool dropdown ms-2">
+                        <!-- <div class="navbar-tool dropdown ms-2">  -->
                             <!--일반 로그인-->
-                            <a class="navbar-tool-icon-box dropdown-toggle" href="account-orders.html"><i class="navbar-tool-icon ci-user"></i></a>
+                        <!--    <a class="navbar-tool-icon-box dropdown-toggle" href="account-orders.html"><i class="navbar-tool-icon ci-user"></i></a> -->
                             <!--판매점 로그인-->
                             <!--<a class="navbar-tool d-none d-lg-flex" href="dashboard-products.html"><span class="navbar-tool-tooltip">My page</span><div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-store"></i></div></a>-->
-                            <div class="dropdown-menu dropdown-menu-end">
+                         <!--   <div class="dropdown-menu dropdown-menu-end">
                                 <div style="min-width: 14rem;">
                                     <h6 class="dropdown-header">주문</h6><a class="dropdown-item d-flex align-items-center" href="account-orders.html"><i class="ci-bag opacity-60 me-2"></i>예약 내역<span class="fs-xs text-muted ms-auto">2</span></a>
                                     <div class="dropdown-divider"></div>
@@ -111,17 +117,17 @@
                                 </div>
                             </div>
                             <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon ci-cart"></i></a></div>
-                        </div>
+                        </div>  -->
                         <!-- before login -->
-                        <!-- <div class="navbar-tool dropdown ms-2">
+                         <div class="navbar-tool dropdown ms-2">
                             <a class="navbar-tool-icon-box dropdown-toggle" href=""><i class="navbar-tool-icon ci-user"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div style="min-width: 14rem;">
-                                    <a class="dropdown-item d-flex align-items-center" href="signin.html"><i class="ci-sign-in opacity-60 me-2 "></i>로그인</a>
-                                    <a class="dropdown-item d-flex align-items-center" href="signup.html"><i class="ci-add-user opacity-60 me-2 "></i>회원가입</a>
+                                    <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/views/member/login.jsp"><i class="ci-sign-in opacity-60 me-2 "></i>로그인</a>
+                                    <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/views/member/enroll.jsp"><i class="ci-add-user opacity-60 me-2 "></i>회원가입</a>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- <div class="navbar-tool ms-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label"></span><i class="navbar-tool-icon ci-cart"></i></a></div> -->
 
                     </div>

@@ -31,16 +31,33 @@ public class ReviewService {
 	
 	public int insertReview(Review review) {
 		int result = reviewDao.insertReview(review);
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
 		return result;
 	}
 	
 	public List<Review> reviewSelectbyGoodId(String goodId) {
 		List<Review> list = reviewDao.reviewSelectbyGoodId(goodId);
-		return list;
+
+		if(list != null) {
+			return list;
+		}else {
+			return null;
+		}
 	}
 	
 	public List<Review> reviewSelectbyMemberId(String memberId) {
 		List<Review> list = reviewDao.reviewSelectbyMemberId(memberId);
-		return list;
+
+		if(list != null) {
+			return list;
+		}else {
+			return null;
+		}
 	}
 }

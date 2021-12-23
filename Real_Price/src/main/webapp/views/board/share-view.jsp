@@ -3,7 +3,7 @@
 <%@ include file="../header.jsp"%>
 	
     <!-- JS Implementing Plugins -->
-    <script src="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
 
     <!-- JS Plugins Init. -->
     <script>
@@ -18,16 +18,16 @@
         })()
     </script>
     <!-- JS Global Compulsory  -->
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS Implementing Plugins -->
-    <script src="assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
-    <script src="assets/vendor/prism/prism.js"></script>
-    <script src="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
-    <script src="assets/vendor/typed.js/lib/typed.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/prism/prism.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/typed.js/lib/typed.min.js"></script>
 
     <!-- JS Front -->
-    <script src="assets/js/theme.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/js/theme.min.js"></script>
 
     <!-- ========== END HEADER ========== -->
 
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <!-- End Form -->
-                        
+
                         <!-- Form -->
                         <div class="row mb-4">
                             <label for="submitAppWebsite" class="col-sm-3 col-form-label form-label">지역</label>
@@ -122,14 +122,48 @@
                 </div>
             </div>
             <!-- End Card -->
+
+            <!-- Card -->
+            <div class="card card-bordered shadow-none" style="margin-top: 5rem;">
+                <div class="card-body">
+                    <!-- Form -->
+                    <form>
+
+                        <!-- Form -->
+                        <div class="row mb-3">
+                            <label for="submitAppProjectName" class="col-sm-3 col-form-label">사용자id불러올곳</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-lg" id="submitAppProjectName" placeholder="내용을 입력하세요." style="float: left;">
+                                <button type="submit" class="btn btn-primary btn-lg" style="float: left; margin-left: 1rem;">등록</button>
+                            </div>
+
+                            <hr style="margin-top : 1rem;">
+
+                            <label for="submitAppProjectName" class="col-sm-3 col-form-label">id12312</label>
+                            <div class="col-sm-9 col-form-label">
+                                <p>안녕하세요.</p>
+                            </div>
+
+                            <label for="submitAppProjectName" class="col-sm-3 col-form-label">id12312</label>
+                            <div class="col-sm-9 col-form-label">
+                                <p>반갑습니다.</p>
+                            </div>
+
+                        </div>
+                        <!-- End Form -->
+                    </form>
+                    <!-- End Form -->
+                </div>
+            </div>
+            <!-- End Card -->
         </div>
     </div>
 
     <!-- JS Implementing Plugins -->
-    <script src="assets/vendor/hs-file-attach/dist/hs-file-attach.min.js"></script>
-    <script src="assets/vendor/hs-count-characters/dist/js/hs-count-characters.js"></script>
-    <script src="assets/vendor/quill/dist/quill.min.js"></script>
-    <script src="assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-file-attach/dist/hs-file-attach.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/hs-count-characters/dist/js/hs-count-characters.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/quill/dist/quill.min.js"></script>
+    <script src="<%=request.getContextPath()%>/views/resources/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
 
     <!-- JS Front -->
 
@@ -161,7 +195,6 @@
 
 
     <!-- END CONTENTS-->
-    
     
 
 

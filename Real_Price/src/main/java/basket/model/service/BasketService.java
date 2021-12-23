@@ -36,8 +36,8 @@ public class BasketService {
 		return list;
 	}
 	
-	public Basket findBasketByMemberId(String memberId, String basketIndex) {
-		Basket basket = basketDao.findBasketByMemberId(memberId, basketIndex);
+	public Basket findBasketByMemberId(String memberId) {
+		Basket basket = basketDao.findBasketByMemberId(memberId);
 		return basket;
 	}
 	
@@ -85,5 +85,18 @@ public class BasketService {
 	public int getBasketDetailPrice(String bdIndex) {
 		int result = basketDao.getBasketDetailPrice(bdIndex);
 		return result;
+	}
+	
+	public int getBasketTotalPrice(String memberId) {
+		int price = 0;
+		Basket basket = basketDao.findBasketByMemberId(memberId);
+		
+		List<BasketDetail> list = basketDao.getBasketDetailByNo(basket.getBasketIndex());
+		
+		for(int i = 0; i < list.size(); i++) {
+			price += (list.get(i).getGoodPrice() * list.get(i).getQuantity());
+		}
+		
+		return price;
 	}
 }

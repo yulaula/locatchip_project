@@ -55,19 +55,19 @@ public class BasketDAO {
 		return list;
 	}
 
+	
 	// memberId로 장바구니 get
-	public Basket findBasketByMemberId(String memberId, String basketIndex) {
+	public Basket findBasketByMemberId(String memberId) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Basket basket = null;
 		try {
 			String sql = prop.getProperty("BASKET_FINDBYINDEX");
 			//SELECT B.BASKET_INDEX, B.TOTAL_PRICE, B.MEMBER_ID, B.PICKUP_COMMENT, B.STATUS
-			//FROM BASKET B WHERE B.MEMBER_ID=? AND B.BASKET_INDEX=?;
+			//FROM BASKET B WHERE B.MEMBER_ID=? AND STATUS='Y';
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
-			pstmt.setString(2, basketIndex);
 			rs= pstmt.executeQuery();
 
 			if(rs.next() == true) {
@@ -77,7 +77,7 @@ public class BasketDAO {
 				basket.setMemberId(rs.getString("MEMBER_ID"));
 				basket.setComment(rs.getString("PICKUP_COMMENT"));
 				basket.setStatus(rs.getString("STATUS"));
-				basket.setGoodList(getBasketDetailByNo(basketIndex));
+				basket.setGoodList(getBasketDetailByNo(basket.getBasketIndex()));
 			}
 
 		} catch (Exception e) {
@@ -152,9 +152,10 @@ public class BasketDAO {
 		ResultSet rs = null;
 		try {
 			String sql = prop.getProperty("BASKETDETAIL_SELECTALL");
-			// SELECT * FROM BASKET_DETAIL
+			// SELECT * FROM BASKET_DETAIL WHERE BASKEK_INDEX=?
 
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mainBasketIndex);
 
 			rs = pstmt.executeQuery();
 
@@ -223,7 +224,7 @@ public class BasketDAO {
 		String query = null;
 		try {
 			query = prop.getProperty("BASKET_DELETE");
-			// DELETE FROM BASKET_DETAIL WHERE BASKETDETAIL_INDEX=?
+			// DELETE FROM BASKET_DETAIL WHERE BD_INDEX=?
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, bdIndex);
 			result = pstmt.executeUpdate();
