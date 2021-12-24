@@ -13,8 +13,8 @@
 PriceService ps = new PriceService();
 List<Price> priceList = (ArrayList<Price>) request.getAttribute("priceList");
 BasketService bs = new BasketService();
-Basket basket = bs.findBasketByMemberId(loginMember.getMemberId());
 List<BasketDetail> basketDetailList = (ArrayList<BasketDetail>) request.getAttribute("basketDetailList");
+Basket basket = bs.findBasketByNo(basketDetailList.get(0).getBasketIndex());
 System.out.println(basketList.get(0).getBasketIndex());
 System.out.println(basketDetailList.get(0).getBdIndex());
 %>
@@ -72,7 +72,7 @@ System.out.println(basketDetailList.get(0).getBdIndex());
 						class="form-control" type="number" id="quantity1" name="quantity1" min="1"
 						value="1">
 					<button class="btn btn-link px-0 text-danger" type="button" 
-					onclick="location.href=''"> <!-- 수량변경 버튼 -->
+					onclick="location.href=''"> <!-- 수량변경 버튼.. getParameter? -->
 						<i class="ci-check-circle me-2"></i><span class="fs-sm">수정</span>
 					</button>
 

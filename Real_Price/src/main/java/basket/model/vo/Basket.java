@@ -15,13 +15,14 @@ public class Basket {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Basket(String basketIndex, int totalPrice, String memberId, String comment, List<BasketDetail> goodList) {
+	public Basket(String basketIndex, int totalPrice, String memberId, String comment, List<BasketDetail> goodList,String status) {
 		super();
 		this.basketIndex = basketIndex;
 		this.totalPrice = totalPrice;
 		this.memberId = memberId;
 		this.comment = comment;
 		this.goodList = goodList;
+		this.status = status;
 	}
 
 	@Override

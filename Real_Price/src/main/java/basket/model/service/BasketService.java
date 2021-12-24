@@ -31,13 +31,13 @@ public class BasketService {
 		close(conn);
 	}
 	
-	public List<Basket> basketSelectAll() {
-		List<Basket> list = basketDao.basketSelectAll();
-		return list;
-	}
-	
 	public Basket findBasketByMemberId(String memberId) {
 		Basket basket = basketDao.findBasketByMemberId(memberId);
+		return basket;
+	}
+	
+	public Basket findBasketByNo(String basketIndex) {
+		Basket basket = basketDao.findBasketByNo(basketIndex);
 		return basket;
 	}
 	
@@ -76,6 +76,10 @@ public class BasketService {
 		return result;
 	}
 	
+	public int updateStatus(String basketIndex) {
+		int result = basketDao.updateStatus(basketIndex);
+		return result;
+	}
 
 	public int getBasketDetailCount(String basketIndex) {
 		int result = basketDao.getBasketDetailCount(basketIndex);

@@ -1,3 +1,5 @@
+<%@page import="price.model.service.PriceService"%>
+<%@page import="basket.model.vo.Basket"%>
 <%@page import="basket.model.service.BasketService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="basket.model.vo.BasketDetail"%>
@@ -7,8 +9,11 @@
 <%@ include file="../header.jsp"%>
 
 <%
+ 	PriceService ps = new PriceService();
 	BasketService bs = new BasketService();
 	List<BasketDetail> basketList = (List<BasketDetail>)request.getAttribute("basketList");
+	Basket basket = (Basket)bs.getBasketDetailByNo(basketList.get(0).getBasketIndex());
+	
 %>
 
 <!-- Page Title-->
@@ -65,7 +70,7 @@
 							<div class="credit-card-wrapper"></div>
 							<form class="credit-card-form row">
 								<div class="mb-3 col-sm-6">
-									<input class="form-control m-auto" type="text" name="number"
+									<input class="form-control m-auto" type="text" name="cardNumber"
 										placeholder="카드 번호" required>
 								</div>
 								<div class="mb-3 col-sm-3">
@@ -85,14 +90,14 @@
 			<div class="d-none d-lg-flex pt-4">
 				<div class="w-50 pe-3">
 					<a class="btn btn-secondary d-block w-100"
-						href="checkout-details.html"><i
+						href=""><i
 						class="ci-arrow-left mt-sm-0 me-1"></i><span
-						class="d-none d-sm-inline">결제정보</span><span
+						class="d-none d-sm-inline">뒤로가기</span><span
 						class="d-inline d-sm-none"></span></a>
 				</div>
 				<div class="w-50 ps-2">
 					<a class="btn btn-primary d-block w-100"
-						href="checkout-complete.html"><span class="d-none d-sm-inline">결제완료</span><span
+						href="<%= request.getContextPath()%>/paymentComplete?basketIndex=<%=basket.getBasketIndex()%>"><span class="d-none d-sm-inline">결제완료</span><span
 						class="d-inline d-sm-none"></span><i
 						class="ci-arrow-right mt-sm-0 ms-1"></i></a>
 				</div>
@@ -104,62 +109,28 @@
 				<div class="py-2 px-xl-2">
 					<div class="widget mb-3">
 						<h2 class="widget-title text-center">픽업 상품</h2>
+						<% for(int i = 0; i < basketList.size(); i++) { %>
+						<!-- item start -->
 						<div class="d-flex align-items-center pb-2 border-bottom">
 							<a class="d-block flex-shrink-0" href="shop-single-v1.html"><img
-								src="<%=request.getContextPath()%>/views/resources/img/shop/cart/widget/01.jpg" width="64" alt="Product"></a>
+								src="<%=request.getContextPath()%>/views/resources/02_img/<%=basketList.get(i).getGoodId()%>.png" width="64" alt="Product"></a>
 							<div class="ps-2">
 								<h6 class="widget-product-title">
-									<a href="shop-single-v1.html">Women Colorblock Sneakers</a>
+									<a href="shop-single-v1.html"><%=ps.productName(basketList.get(i).getGoodId()) %></a>
 								</h6>
 								<div class="widget-product-meta">
-									<span class="text-accent me-2">$150.<small>원</small></span><span
-										class="text-muted">x 1</span>
+									<span class="text-accent me-2"><%=basketList.get(i).getGoodPrice() %><small>원</small></span><span
+										class="text-muted">x <%=basketList.get(i).getQuantity() %></span>
 								</div>
 							</div>
 						</div>
-						<div class="d-flex align-items-center py-2 border-bottom">
-							<a class="d-block flex-shrink-0" href="shop-single-v1.html"><img
-								src="<%=request.getContextPath()%>/views/resources/img/shop/cart/widget/02.jpg" width="64" alt="Product"></a>
-							<div class="ps-2">
-								<h6 class="widget-product-title">
-									<a href="shop-single-v1.html">TH Jeans City Backpack</a>
-								</h6>
-								<div class="widget-product-meta">
-									<span class="text-accent me-2">$79.<small>원</small></span><span
-										class="text-muted">x 1</span>
-								</div>
-							</div>
-						</div>
-						<div class="d-flex align-items-center py-2 border-bottom">
-							<a class="d-block flex-shrink-0" href="shop-single-v1.html"><img
-								src="<%=request.getContextPath()%>/views/resources/img/shop/cart/widget/03.jpg" width="64" alt="Product"></a>
-							<div class="ps-2">
-								<h6 class="widget-product-title">
-									<a href="shop-single-v1.html">3-Color Sun Stash Hat</a>
-								</h6>
-								<div class="widget-product-meta">
-									<span class="text-accent me-2">$22.<small>원</small></span><span
-										class="text-muted">x 1</span>
-								</div>
-							</div>
-						</div>
-						<div class="d-flex align-items-center py-2 border-bottom">
-							<a class="d-block flex-shrink-0" href="shop-single-v1.html"><img
-								src="<%=request.getContextPath()%>/views/resources/img/shop/cart/widget/04.jpg" width="64" alt="Product"></a>
-							<div class="ps-2">
-								<h6 class="widget-product-title">
-									<a href="shop-single-v1.html">Cotton Polo Regular Fit</a>
-								</h6>
-								<div class="widget-product-meta">
-									<span class="text-accent me-2">$9.<small>원</small></span><span
-										class="text-muted">x 1</span>
-								</div>
-							</div>
-						</div>
+						<!-- item end -->			
+						<% } %>
+									
 					</div>
 
 					<h3 class="fw-normal text-center my-4">
-						150,000<small>원</small>
+						<%=basket.getTotalPrice() %><small>원</small>
 					</h3>
 				</div>
 			</div>

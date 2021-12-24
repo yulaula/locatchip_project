@@ -29,32 +29,6 @@ public class BasketDAO {
 		this.conn = conn;
 	}
 
-	// 장바구니 출력 -- 안쓰는 기능
-	public List<Basket> basketSelectAll() {
-		List<Basket> list = new ArrayList<Basket>();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			String sql = prop.getProperty("BASKET_SELECTALL");
-			// SELECT * FROM BASKET
-
-			pstmt = conn.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-
-			while(rs.next() == true) {
-				String basketIndex = rs.getString("BASKET_INDEX");
-				int totalPrice = rs.getInt("TOTAL_PRICE");
-				String memberId = rs.getString("MEMBER_ID"); 
-				String comment = rs.getString("PICKUP_COMMENT");
-				String status = rs.getString("STATUS");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
 	
 	// memberId로 장바구니 get
 	public Basket findBasketByMemberId(String memberId) {
@@ -62,12 +36,41 @@ public class BasketDAO {
 		ResultSet rs = null;
 		Basket basket = null;
 		try {
-			String sql = prop.getProperty("BASKET_FINDBYINDEX");
+			String sql = prop.getProperty("BASKET_FINDBY_MEMBERID");
 			//SELECT B.BASKET_INDEX, B.TOTAL_PRICE, B.MEMBER_ID, B.PICKUP_COMMENT, B.STATUS
 			//FROM BASKET B WHERE B.MEMBER_ID=? AND STATUS='Y';
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
+			rs= pstmt.executeQuery();
+
+			if(rs.next() == true) {
+				basket = new Basket();
+				basket.setBasketIndex(rs.getString("BASKET_INDEX"));
+				basket.setTotalPrice(rs.getInt("TOTAL_PRICE"));
+				basket.setMemberId(rs.getString("MEMBER_ID"));
+				basket.setComment(rs.getString("PICKUP_COMMENT"));
+				basket.setStatus(rs.getString("STATUS"));
+				basket.setGoodList(getBasketDetailByNo(basket.getBasketIndex()));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return basket;
+	}	
+
+	// basketIndex로 장바구니 get
+	public Basket findBasketByNo(String basketIndex) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Basket basket = null;
+		try {
+			String sql = prop.getProperty("BASKET_FINDBY_INDEX");
+			//SELECT * FROM BAKSET WHERE BAKET_INDEX=?
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, basketIndex);
 			rs= pstmt.executeQuery();
 
 			if(rs.next() == true) {
@@ -106,7 +109,7 @@ public class BasketDAO {
 		}		
 		return result;
 	}
-	
+
 
 	// 결제완료 후 장바구니 삭제
 	public int deleteBasket(String eachBasketIndex) {
@@ -199,7 +202,7 @@ public class BasketDAO {
 		}		
 		return result;
 	}
-	
+
 	public int getBasketDetailPrice(String bdIndex) {
 		int price = 0; 
 		PreparedStatement pstmt = null;
@@ -254,7 +257,26 @@ public class BasketDAO {
 		}
 		return result;
 	}
-	
+
+	// 장바구니(STATUS: Y) -> 예약(STATUS: N)
+	public int updateStatus(String basketIndex) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		try {
+			String sql =  prop.getProperty("BASKET_UPDATE_STATUS");
+			// UPDATE BASKET SET STATUS='N' WHERE BASKET_INDEX=?
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, basketIndex);
+
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	// 장바구니 내에 상품 갯수 가져옴
 	public int getBasketDetailCount(String basketIndex) {
 		int result = 0;
@@ -267,7 +289,7 @@ public class BasketDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(2, basketIndex);
 			result = pstmt.executeUpdate();
-			
+
 			if(rs.next() ==  true) {
 				result = rs.getInt(1);
 			}
@@ -276,7 +298,7 @@ public class BasketDAO {
 		}		
 		return result;		
 	}
-	
+
 	//	public static void main(String[] args) {
 	//
 	//	}

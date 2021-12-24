@@ -1,8 +1,7 @@
 package basket.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,49 +10,51 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import basket.model.service.BasketService;
-import basket.model.vo.BasketDetail;
+import basket.model.vo.Basket;
+import reservation.model.service.ReservationService;
 
-
-
-@WebServlet("/paymentView")
-public class BasketPaymentServlet extends HttpServlet{
+@WebServlet("/paymentComplete")
+public class PaymentCompleteServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private BasketService bs = new BasketService();
+	private ReservationService rs = new ReservationService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<BasketDetail> basketList = new ArrayList<BasketDetail>();
-		
+
 		try {
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
-
+			
 			String basketIndex = req.getParameter("basketIndex");
 			System.out.println(basketIndex);
 
-			basketList = bs.getBasketDetailByNo(basketIndex);
-		
-			System.out.println("list 크기 : " + basketList.size());
-
-
-			if(basketList.isEmpty()) {
-				sendCommonPage("결제할 상품이 없습니다.", "/views/product/shop-cart.jsp", req, resp);
-				return;
+			int result = bs.updateStatus(basketIndex);
+			
+			// String reservIndex = create
+			// getBasket .getId
+			// 
+			
+			/*
+			 * String reservIndex;
+	String basketIndex;
+	String memberId;
+	Date reservDate;
+			 */
+			
+			if(result > 0) {
+				
 			}
-
+			
 		} catch (Exception e) {
 			sendCommonPage("잘못된 접근입니다.", "/views/product/shop-cart.jsp", req, resp);
 		}
-
-		req.setAttribute("basketList", basketList); 
-		req.getRequestDispatcher("views/product/card.jsp").forward(req, resp);
-
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
-	}
+	}	
 	
 	public void sendCommonPage(String msg, String path, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("msg", msg);
