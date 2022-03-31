@@ -1,4 +1,4 @@
-# semiproject
+# locatchip
 
 로켓칩 locatchip!
 
