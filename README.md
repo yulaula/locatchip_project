@@ -4,10 +4,12 @@
   
 ##  🚀 로켓칩 Locatchip!
 #####  원하는 생필품의 오프라인 점포 최저가를 찾아주는 서비스
-</div>
-<br>
-![image](https://user-images.githubusercontent.com/93673554/161117346-103b1e38-d45d-400c-8cb4-dc73eb92de7c.png)
 
+<br>
+
+![20220401_024414](https://user-images.githubusercontent.com/93673554/161117516-37c87e9d-330c-488d-991e-2ebbb3b31361.png)
+
+</div>
 <br>
 
 + 개발 목표
