@@ -1,6 +1,7 @@
-# locatchip
+# Locatchip
 
-로켓칩 locatchip!
+<div align="center">
+## 로켓칩 locatchip! 🚀
+##### 원하는 생필품의 오프라인 점포 최저가를 찾아주는 서비스
 
-원하는 물품의 최저가를 누구보다 빠르게 조회해주는 서비스입니다.
-
+</div>
